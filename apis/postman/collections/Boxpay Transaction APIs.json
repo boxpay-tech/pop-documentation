@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "93c9777a-fa25-4dd2-9179-8a2c3b7a028a",
+		"_postman_id": "bf209f50-323a-4052-8aba-84ac61296c29",
 		"name": "Boxpay Transaction APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "162392-93c9777a-fa25-4dd2-9179-8a2c3b7a028a"
+		"_uid": "162392-bf209f50-323a-4052-8aba-84ac61296c29"
 	},
 	"item": [
 		{
@@ -15,7 +15,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "acf32138-d545-4a20-9dc3-53cac6c1204c",
+								"id": "1e2452a4-f809-4158-b155-7cd58b0d2964",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"transactionId\", jsonData.operationId);"
@@ -26,7 +26,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b13f21bf-3434-4385-83ef-5cf8c84c745b",
+								"id": "40e706ac-eaa6-4893-9170-cfcac42c3b82",
 								"exec": [
 									"pm.environment.set(\"amount\", _.random(100, 500));",
 									"pm.environment.set(\"currency\", _.sample(['USD', 'SGD']));",
@@ -38,7 +38,7 @@
 							}
 						}
 					],
-					"id": "4c5cd105-468b-47f1-97fe-7e6f85657001",
+					"id": "4c21b224-2308-46de-8b25-e6999781c20f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -86,7 +86,7 @@
 					},
 					"response": [
 						{
-							"id": "7ed0e3cd-ef04-4e63-a1db-d324a4a1a8e8",
+							"id": "65ccb151-7768-4cb8-b60e-21d825258d41",
 							"name": "Auth Payment Response",
 							"originalRequest": {
 								"method": "POST",
@@ -156,7 +156,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7524d6c0-28ee-4f80-a47b-d2dbb2cbb0b8",
+								"id": "35c9838d-2581-47f5-81b8-81830bc72095",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"captureId\", jsonData.operationId);"
@@ -165,7 +165,7 @@
 							}
 						}
 					],
-					"id": "bf7201bf-4c12-44ab-9588-43794ee490fe",
+					"id": "53b55273-4298-4c4b-bfd4-1faf33a97f2a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -208,7 +208,7 @@
 					},
 					"response": [
 						{
-							"id": "10ea188b-8164-4e71-b355-3ab8a7e10d32",
+							"id": "c16d8212-f9f4-4303-8dac-922b6985ef3a",
 							"name": "Capture Response",
 							"originalRequest": {
 								"method": "POST",
@@ -273,7 +273,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "09a8e56f-b339-4d16-aa8f-19f5b04cd1ba",
+								"id": "76da2c07-a813-453e-aafc-ff579811c5ce",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"refundId\", jsonData.operationId);"
@@ -282,7 +282,7 @@
 							}
 						}
 					],
-					"id": "edb0e197-f844-4771-b81d-1b686a59b136",
+					"id": "a8209607-a4bb-413b-aacb-598b35d5eae5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -325,7 +325,7 @@
 					},
 					"response": [
 						{
-							"id": "cae898f7-feeb-4840-8e46-b0bf0ed51d53",
+							"id": "1e6362e7-6843-4d6b-bc49-1a8094d1eed8",
 							"name": "Refund Response",
 							"originalRequest": {
 								"method": "POST",
@@ -390,7 +390,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "958a90cd-e9cc-4eef-b062-bc6a6ae00db1",
+								"id": "420cea9d-bbec-4908-a0b6-85ae0674918c",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"cancelId\", jsonData.operationId);"
@@ -399,7 +399,7 @@
 							}
 						}
 					],
-					"id": "8cd1a260-b753-4d12-81c8-6725b76dc9ad",
+					"id": "d926e44a-1e83-4b4f-8d07-340a59cf49d4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -433,7 +433,7 @@
 					},
 					"response": [
 						{
-							"id": "0b6b1d0f-d5bd-4b8c-b29a-3f8a9df7c617",
+							"id": "35e43c9d-df45-4a8b-822d-058fa557e4c3",
 							"name": "Cancel Response",
 							"originalRequest": {
 								"method": "POST",
@@ -493,7 +493,7 @@
 				},
 				{
 					"name": "Get Transaction Details",
-					"id": "af659d1a-5447-4b2b-ac09-a69c613270f9",
+					"id": "2bc3acb1-618e-405a-97ec-1fa55b675018",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -526,7 +526,7 @@
 					},
 					"response": [
 						{
-							"id": "ac7dbd7c-a075-440f-9fee-58143e68702e",
+							"id": "c8914568-20ae-4925-b851-abc17d53c7c0",
 							"name": "Get Transaction Details Response",
 							"originalRequest": {
 								"method": "GET",
@@ -584,7 +584,7 @@
 					]
 				}
 			],
-			"id": "1ead2191-a10b-419a-a3ba-31ca09ece920"
+			"id": "040b3463-7cc0-4b28-8aac-85a229807340"
 		}
 	]
 }

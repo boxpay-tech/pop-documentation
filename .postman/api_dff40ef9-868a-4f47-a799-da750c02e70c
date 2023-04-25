@@ -9,7 +9,7 @@ id = dff40ef9-868a-4f47-a799-da750c02e70c
 
 [config.relations.collections]
 rootDirectory = apis/postman/collections
-files[] = {"id":"162392-93c9777a-fa25-4dd2-9179-8a2c3b7a028a","path":"Boxpay Transaction APIs.json","metaData":{}}
+files[] = {"id":"162392-bf209f50-323a-4052-8aba-84ac61296c29","path":"Boxpay Transaction APIs.json","metaData":{}}
 
 [config.relations.collections.metaData]
 
