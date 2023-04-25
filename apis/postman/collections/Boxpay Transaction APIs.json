@@ -1,0 +1,590 @@
+{
+	"info": {
+		"_postman_id": "93c9777a-fa25-4dd2-9179-8a2c3b7a028a",
+		"name": "Boxpay Transaction APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "162392-93c9777a-fa25-4dd2-9179-8a2c3b7a028a"
+	},
+	"item": [
+		{
+			"name": "Transaction APIs",
+			"item": [
+				{
+					"name": "Auth Payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "acf32138-d545-4a20-9dc3-53cac6c1204c",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"transactionId\", jsonData.operationId);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b13f21bf-3434-4385-83ef-5cf8c84c745b",
+								"exec": [
+									"pm.environment.set(\"amount\", _.random(100, 500));",
+									"pm.environment.set(\"currency\", _.sample(['USD', 'SGD']));",
+									"pm.environment.set(\"country\", _.sample(['US', 'SG']));",
+									"pm.environment.set(\"cardNo\", _.sample(['2222400070000005', '4111111111111111']))",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "4c5cd105-468b-47f1-97fe-7e6f85657001",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "LSVhj3DAL8G6CmP4km9XqyWjsZCRWz87fOzVxENCS96krRKushqJIXjFLuKXipeLqcuHf7Baz0QLJ4z4mAzAft",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 123",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"context\": {\n        \"countryCode\": \"{{country}}\",\n        \"legalEntity\": {\n            \"code\": \"Legal_Entity\"\n        }\n    },\n    \"paymentType\": \"A\",\n    \"moneyInstruction\": {\n        \"money\": {\n            \"amount\": {{amount}},\n            \"currencyCode\": \"{{currency}}\"\n        },\n        \"descriptor\": {\n            \"line1\": \"Some descriptor\"\n        },\n        \"instrument\": {\n            \"type\": \"card/plain\",\n            \"card\": {\n                \"number\": \"{{cardNo}}\",\n                \"expiry\": \"2030-03\",\n                \"cvc\": \"737\",\n                \"holderName\": \"John Smith\"\n            }\n        },\n        \"billingAddress\": {\n            \"address1\": \"first address line\",\n            \"address2\": \"second address line\",\n            \"city\": \"Faridabad\",\n            \"state\": \"Haryana\",\n            \"countryCode\": \"IN\",\n            \"postalCode\": \"121004\"\n        }\n    },\n    \"shopper\": {\n        \"firstName\": \"test\",\n        \"lastName\": \"last\",\n        \"email\": \"test123@gmail.com\"\n    },\n    \"frontendReturnUrl\": \"<merchant-url>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions",
+							"protocol": "http",
+							"host": [
+								"{{dns}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7ed0e3cd-ef04-4e63-a1db-d324a4a1a8e8",
+							"name": "Auth Payment Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 123",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"context\": {\n        \"countryCode\": \"{{country}}\",\n        \"legalEntity\": {\n            \"code\": \"Legal_Entity\"\n        }\n    },\n    \"paymentType\": \"A\",\n    \"moneyInstruction\": {\n        \"money\": {\n            \"amount\": {{amount}},\n            \"currencyCode\": \"{{currency}}\"\n        },\n        \"descriptor\": {\n            \"line1\": \"Some descriptor\"\n        },\n        \"instrument\": {\n            \"type\": \"card/plain\",\n            \"card\": {\n                \"number\": \"{{cardNo}}\",\n                \"expiry\": \"2030-03\",\n                \"cvc\": \"737\",\n                \"holderName\": \"John Smith\"\n            }\n        },\n        \"billingAddress\": {\n            \"address1\": \"first address line\",\n            \"address2\": \"second address line\",\n            \"city\": \"Faridabad\",\n            \"state\": \"Haryana\",\n            \"countryCode\": \"IN\",\n            \"postalCode\": \"121004\"\n        }\n    },\n    \"shopper\": {\n        \"firstName\": \"test\",\n        \"lastName\": \"last\",\n        \"email\": \"test123@gmail.com\"\n    },\n    \"frontendReturnUrl\": \"<merchant-url>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions",
+									"protocol": "http",
+									"host": [
+										"{{dns}}"
+									],
+									"path": [
+										"merchants",
+										"{{merchantId}}",
+										"transactions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "230"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationId\": \"a2h79K0CyI\",\n    \"status\": {\n        \"operation\": \"Authorisation\",\n        \"status\": \"Rejected\",\n        \"reason\": \"-1006:merchant is not setup to use direct_n3d api_mode\"\n    },\n    \"pspCode\": \"REDDOT\",\n    \"pspReference\": null,\n    \"authCode\": null,\n    \"additionalData\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Capture Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7524d6c0-28ee-4f80-a47b-d2dbb2cbb0b8",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"captureId\", jsonData.operationId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "bf7201bf-4c12-44ab-9588-43794ee490fe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "LSVhj3DAL8G6CmP4km9XqyWjsZCRWz87fOzVxENCS96krRKushqJIXjFLuKXipeLqcuHf7Baz0QLJ4z4mAzAft",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"money\": {\n        \"amount\": \"238\",\n        \"currencyCode\": \"SGD\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}/captures",
+							"protocol": "http",
+							"host": [
+								"{{dns}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"transactions",
+								"{{transactionId}}",
+								"captures"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "10ea188b-8164-4e71-b355-3ab8a7e10d32",
+							"name": "Capture Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"money\": {\n        \"amount\": \"238\",\n        \"currencyCode\": \"SGD\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}/captures",
+									"protocol": "http",
+									"host": [
+										"{{dns}}"
+									],
+									"path": [
+										"merchants",
+										"{{merchantId}}",
+										"transactions",
+										"{{transactionId}}",
+										"captures"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "234"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationId\": \"9VKKsFJ2Ew\",\n    \"status\": {\n        \"operation\": \"Partial_Capture\",\n        \"status\": \"Posted\",\n        \"reason\": \"Posted to PSP\"\n    },\n    \"pspCode\": \"CYBERSOURCE\",\n    \"pspReference\": \"016150703802094\",\n    \"authCode\": null,\n    \"additionalData\": {\n        \"reconciliationId\": \"76532859\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Refund Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09a8e56f-b339-4d16-aa8f-19f5b04cd1ba",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"refundId\", jsonData.operationId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "edb0e197-f844-4771-b81d-1b686a59b136",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "LSVhj3DAL8G6CmP4km9XqyWjsZCRWz87fOzVxENCS96krRKushqJIXjFLuKXipeLqcuHf7Baz0QLJ4z4mAzAft",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"money\": {\n        \"amount\": \"238\",\n        \"currencyCode\": \"SGD\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}/refunds",
+							"protocol": "http",
+							"host": [
+								"{{dns}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"transactions",
+								"{{transactionId}}",
+								"refunds"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "cae898f7-feeb-4840-8e46-b0bf0ed51d53",
+							"name": "Refund Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"money\": {\n        \"amount\": \"238\",\n        \"currencyCode\": \"SGD\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}/refunds",
+									"protocol": "http",
+									"host": [
+										"{{dns}}"
+									],
+									"path": [
+										"merchants",
+										"{{merchantId}}",
+										"transactions",
+										"{{transactionId}}",
+										"refunds"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "233"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationId\": \"9VKLnSsWUE\",\n    \"status\": {\n        \"operation\": \"Partial_Refund\",\n        \"status\": \"Posted\",\n        \"reason\": \"Posted to PSP\"\n    },\n    \"pspCode\": \"CYBERSOURCE\",\n    \"pspReference\": \"016150703802094\",\n    \"authCode\": null,\n    \"additionalData\": {\n        \"reconciliationId\": \"76532904\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "958a90cd-e9cc-4eef-b062-bc6a6ae00db1",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"cancelId\", jsonData.operationId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "8cd1a260-b753-4d12-81c8-6725b76dc9ad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "LSVhj3DAL8G6CmP4km9XqyWjsZCRWz87fOzVxENCS96krRKushqJIXjFLuKXipeLqcuHf7Baz0QLJ4z4mAzAft",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}/cancellations",
+							"protocol": "http",
+							"host": [
+								"{{dns}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"transactions",
+								"{{transactionId}}",
+								"cancellations"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0b6b1d0f-d5bd-4b8c-b29a-3f8a9df7c617",
+							"name": "Cancel Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}/cancellations",
+									"protocol": "http",
+									"host": [
+										"{{dns}}"
+									],
+									"path": [
+										"merchants",
+										"{{merchantId}}",
+										"transactions",
+										"{{transactionId}}",
+										"cancellations"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Apr 2023 05:29:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"operationId\": \"9X3skikkKc\",\n    \"status\": {\n        \"operation\": \"Cancel\",\n        \"status\": \"Posted\",\n        \"reason\": \"Posted to PSP\"\n    },\n    \"pspCode\": \"ADYEN\",\n    \"pspReference\": \"WCQPVQPCH3RZNN82\",\n    \"authCode\": null,\n    \"additionalData\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Transaction Details",
+					"id": "af659d1a-5447-4b2b-ac09-a69c613270f9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "LSVhj3DAL8G6CmP4km9XqyWjsZCRWz87fOzVxENCS96krRKushqJIXjFLuKXipeLqcuHf7Baz0QLJ4z4mAzAft",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}",
+							"protocol": "http",
+							"host": [
+								"{{dns}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"transactions",
+								"{{transactionId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ac7dbd7c-a075-440f-9fee-58143e68702e",
+							"name": "Get Transaction Details Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{dns}}/merchants/{{merchantId}}/transactions/{{transactionId}}",
+									"protocol": "http",
+									"host": [
+										"{{dns}}"
+									],
+									"path": [
+										"merchants",
+										"{{merchantId}}",
+										"transactions",
+										"{{transactionId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 18 Apr 2023 11:23:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1748"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transactionId\": \"9StNE14WyI\",\n    \"merchantId\": \"8KmZGY8Dok\",\n    \"basicDetails\": {\n        \"type\": \"basicDetails\",\n        \"id\": \"9StNE14WyI\",\n        \"transactionId\": \"9StNE14WyI\",\n        \"merchantId\": \"8KmZGY8Dok\",\n        \"version\": 2,\n        \"addedOn\": \"2023-04-18T11:19:40.035074897Z\",\n        \"updatedOn\": \"2023-04-18T11:19:40.756368744Z\",\n        \"context\": {\n            \"legalEntity\": {\n                \"code\": \"Legal_Entity\"\n            },\n            \"countryCode\": \"US\",\n            \"clientPosId\": null,\n            \"clientReferenceId\": null\n        },\n        \"status\": {\n            \"operation\": \"Authorisation\",\n            \"status\": \"Approved\",\n            \"reason\": \"Approved by PSP\"\n        }\n    },\n    \"statusHistory\": {\n        \"type\": \"statusHistory\",\n        \"id\": \"9StNE14WyI\",\n        \"transactionId\": \"9StNE14WyI\",\n        \"merchantId\": \"8KmZGY8Dok\",\n        \"version\": 2,\n        \"addedOn\": \"2023-04-18T11:19:40.035082897Z\",\n        \"updatedOn\": \"2023-04-18T11:19:40.035083347Z\",\n        \"statusChanges\": [\n            {\n                \"oldStatus\": {\n                    \"operation\": \"Authorisation\",\n                    \"status\": \"Received\",\n                    \"reason\": \"Received by Boxpay for processing\"\n                },\n                \"newStatus\": {\n                    \"operation\": \"Authorisation\",\n                    \"status\": \"Approved\",\n                    \"reason\": \"Approved by PSP\"\n                },\n                \"addedOn\": \"2023-04-18T11:19:40.756386664Z\"\n            }\n        ]\n    },\n    \"authorisation\": {\n        \"type\": \"authorisation\",\n        \"id\": \"9StNE14WyI\",\n        \"transactionId\": \"9StNE14WyI\",\n        \"merchantId\": \"8KmZGY8Dok\",\n        \"version\": 1,\n        \"addedOn\": \"2023-04-18T11:19:40.756340503Z\",\n        \"updatedOn\": \"2023-04-18T11:19:40.756340793Z\",\n        \"pspResponses\": [\n            {\n                \"pspCode\": \"ADYEN\",\n                \"receivedOn\": \"2023-04-18T11:19:40.756315263Z\",\n                \"pspReference\": \"MF9HP9MH2HXXGN82\",\n                \"status\": {\n                    \"operation\": \"Authorisation\",\n                    \"status\": \"Approved\",\n                    \"reason\": \"Approved by PSP\"\n                },\n                \"authCode\": \"043380\"\n            }\n        ],\n        \"paymentMethod\": {\n            \"id\": \"66e9d00e-fb72-3475-80e6-b5f8e58863d7\",\n            \"type\": \"Card\",\n            \"brand\": \"VISA\",\n            \"classification\": null,\n            \"subBrand\": null,\n            \"addedDTime\": \"2023-02-14T11:03:10.142970326Z\"\n        },\n        \"money\": {\n            \"amount\": 109,\n            \"currencyCode\": \"USD\"\n        },\n        \"frontendReturnUrl\": \"<merchant-url>\"\n    },\n    \"captures\": [],\n    \"refunds\": [],\n    \"cancellation\": null\n}"
+						}
+					]
+				}
+			],
+			"id": "1ead2191-a10b-419a-a3ba-31ca09ece920"
+		}
+	]
+}
