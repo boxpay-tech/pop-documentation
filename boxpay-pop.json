@@ -2,7 +2,7 @@
     "openapi": "3.0.1",
     "info": {
         "title": "BoxPay APIs",
-        "description": "The BoxPay API operates on the [REST](https://en.wikipedia.org/wiki/REST) protocol. Our API features predictable resource-oriented URLs, accepts JSON-format request bodies, returns JSON-format responses, and adheres to standard HTTP response codes, authentication, and verbs.\n\nYou have the option to use the BoxPay API in test mode, ensuring it doesn't impact your live data or interact with the banking networks. The choice between live mode and test mode is determined by the base URL used for making the API request.\n\nWith BoxPay's Payments APIs, you can implement and manage a powerful payments solution with a wide range of features, including:\n\n1.) Online payments via [Payment Links](https://developers.boxpay.tech/docs/checkout-integration/payment-links/), [Hosted Checkout Page](https://developers.boxpay.tech/docs/checkout-integration/checkout-session/) or custom [Payment APIs](https://developers.boxpay.tech/docs/api-integration/) based integrations\n2.) Payouts\n\nNot sure where to start?\n\nSee our guide to [Merchant Onboarding](https://developers.boxpay.tech/docs/merchant-onboarding/).\n\n"
+        "description": "The BoxPay API operates on the [REST](https://en.wikipedia.org/wiki/REST) protocol. Our API features predictable resource-oriented URLs, accepts JSON-format request bodies, returns JSON-format responses, and adheres to standard HTTP response codes, authentication, and verbs.\n\nYou have the option to use the BoxPay API in test mode, ensuring it doesn't impact your live data or interact with the banking networks. The choice between live mode and test mode is determined by the base URL used for making the API request.\n\n\nWith BoxPay's Payments APIs, you can implement and manage a powerful payments solution with a wide range of features, including:\n\n1.) Online payments via [Payment Links](https://developers.boxpay.tech/docs/checkout-integration/payment-links/), [Hosted Checkout Page](https://developers.boxpay.tech/docs/checkout-integration/checkout-session/) or custom [Payment APIs](https://developers.boxpay.tech/docs/api-integration/) based integrations\n\n2.) Payouts\n\n\nNot sure where to start?\n\nSee our guide to [Merchant Onboarding](https://developers.boxpay.tech/docs/merchant-onboarding/).\n\n"
     },
     "servers": [
         {
@@ -213,6 +213,9 @@
                         "description": "Created",
                         "content": {
                             "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PaymentResponse"
+                                },
                                 "examples": {
                                     "Payment Response": {
                                         "description": "Example response body for payment",
@@ -3400,8 +3403,7 @@
                     "deliveryAddress": {
                         "$ref": "#/components/schemas/AddressWithContactDetails"
                     }
-                },
-                "description": "Shopper details"
+                }
             },
             "TokenDetails": {
                 "required": [
@@ -3475,55 +3477,6 @@
                         "type": "string"
                     },
                     "cashTag": {
-                        "type": "string"
-                    }
-                }
-            },
-            "CaptureOptions": {
-                "type": "object",
-                "properties": {
-                    "sequenceNumber": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "totalCount": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                }
-            },
-            "PaymentCaptureRefundRequest": {
-                "required": [
-                    "money"
-                ],
-                "type": "object",
-                "properties": {
-                    "requestId": {
-                        "type": "string"
-                    },
-                    "money": {
-                        "$ref": "#/components/schemas/Money"
-                    },
-                    "order": {
-                        "$ref": "#/components/schemas/OrderDetails"
-                    },
-                    "captureOptions": {
-                        "$ref": "#/components/schemas/CaptureOptions"
-                    },
-                    "refundReason": {
-                        "type": "string",
-                        "enum": [
-                            "requestedByCustomer",
-                            "duplicateOrder",
-                            "wrongItemDelivered",
-                            "fraudulentActivity",
-                            "itemNotAsDescribed",
-                            "customerDissatisfaction",
-                            "itemNotInStock",
-                            "others"
-                        ]
-                    },
-                    "customRefundReason": {
                         "type": "string"
                     }
                 }
@@ -4405,160 +4358,6 @@
                     "propertyName": "type"
                 }
             },
-            "MerchantAppRedirectAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "method": {
-                                "type": "string"
-                            },
-                            "url": {
-                                "type": "string"
-                            },
-                            "data": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            "MerchantAwaitAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "url": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                ]
-            },
-            "MerchantEncryptionAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "algo": {
-                                "type": "string"
-                            },
-                            "keyId": {
-                                "type": "string"
-                            },
-                            "encryptionKey": {
-                                "type": "string"
-                            },
-                            "certificateFingerprint": {
-                                "type": "string"
-                            },
-                            "dataStructure": {
-                                "type": "string"
-                            },
-                            "outputField": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                ]
-            },
-            "MerchantHtmlAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "htmlPageString": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                ]
-            },
-            "MerchantQRCodeAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "url": {
-                                "type": "string"
-                            },
-                            "content": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                ]
-            },
-            "MerchantSdkAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "url": {
-                                "type": "string"
-                            },
-                            "data": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            "MerchantWebRedirectAction": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/MerchantAction"
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "method": {
-                                "type": "string"
-                            },
-                            "url": {
-                                "type": "string"
-                            },
-                            "data": {
-                                "type": "object",
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
             "PaymentMethodDetails": {
                 "required": [
                     "brand",
@@ -5232,29 +5031,7 @@
                     "actions": {
                         "type": "array",
                         "items": {
-                            "oneOf": [
-                                {
-                                    "$ref": "#/components/schemas/MerchantAppRedirectAction"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MerchantAwaitAction"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MerchantEncryptionAction"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MerchantHtmlAction"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MerchantQRCodeAction"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MerchantSdkAction"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/MerchantWebRedirectAction"
-                                }
-                            ]
+                            "$ref": "#/components/schemas/MerchantAction"
                         }
                     },
                     "additionalData": {
@@ -5349,6 +5126,55 @@
                     },
                     "pspReference": {
                         "$ref": "#/components/schemas/TokenDetails"
+                    }
+                }
+            },
+            "CaptureOptions": {
+                "type": "object",
+                "properties": {
+                    "sequenceNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "PaymentCaptureRefundRequest": {
+                "required": [
+                    "money"
+                ],
+                "type": "object",
+                "properties": {
+                    "requestId": {
+                        "type": "string"
+                    },
+                    "money": {
+                        "$ref": "#/components/schemas/Money"
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/OrderDetails"
+                    },
+                    "captureOptions": {
+                        "$ref": "#/components/schemas/CaptureOptions"
+                    },
+                    "refundReason": {
+                        "type": "string",
+                        "enum": [
+                            "requestedByCustomer",
+                            "duplicateOrder",
+                            "wrongItemDelivered",
+                            "fraudulentActivity",
+                            "itemNotAsDescribed",
+                            "customerDissatisfaction",
+                            "itemNotInStock",
+                            "others"
+                        ]
+                    },
+                    "customRefundReason": {
+                        "type": "string"
                     }
                 }
             },
@@ -5662,7 +5488,8 @@
                 "description": "API Key to call BoxPay APIs. You can fetch API Key from 'API Credentials' page under 'Developers' menu from the sidebar in Merchant Dashboard.",
                 "name": "Authorization",
                 "in": "header",
-                "scheme": "bearer"
+                "scheme": "bearer",
+                "bearerFormat": "<apiKey>"
             }
         }
     }
