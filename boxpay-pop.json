@@ -2,16 +2,16 @@
     "openapi": "3.0.1",
     "info": {
         "title": "BoxPay APIs",
-        "description": "The BoxPay API operates on the [REST](https://en.wikipedia.org/wiki/REST) protocol. Our API features predictable resource-oriented URLs, accepts JSON-format request bodies, returns JSON-format responses, and adheres to standard HTTP response codes, authentication, and verbs.\n\nYou have the option to use the BoxPay API in test mode, ensuring it doesn't impact your live data or interact with the banking networks. The choice between live mode and test mode is determined by the base URL used for making the API request.\n\nWith BoxPay's Payments APIs, you can implement and manage a powerful payments solution with a wide range of features, including:\n\n1.) Online payments via [Payment Links](https://developers.boxpay.tech/docs/checkout-integration/payment-links/), [Hosted Checkout Page](https://developers.boxpay.tech/docs/checkout-integration/checkout-session/) or custom [Payment APIs](https://developers.boxpay.tech/docs/api-integration/) based integrations\n2.) Payouts\nNot sure where to start?\n\nSee our guide to [Merchant Onboarding](https://developers.boxpay.tech/docs/merchant-onboarding/).\n\n"
+        "description": "The BoxPay API operates on the [REST](https://en.wikipedia.org/wiki/REST) protocol. Our API features predictable resource-oriented URLs, accepts JSON-format request bodies, returns JSON-format responses, and adheres to standard HTTP response codes, authentication, and verbs.\n\nYou have the option to use the BoxPay API in test mode, ensuring it doesn't impact your live data or interact with the banking networks. The choice between live mode and test mode is determined by the base URL used for making the API request.\n\nWith BoxPay's Payments APIs, you can implement and manage a powerful payments solution with a wide range of features, including:\n\n1.) Online payments via [Payment Links](https://developers.boxpay.tech/docs/checkout-integration/payment-links/), [Hosted Checkout Page](https://developers.boxpay.tech/docs/checkout-integration/checkout-session/) or custom [Payment APIs](https://developers.boxpay.tech/docs/api-integration/) based integrations\n2.) Payouts\n\nNot sure where to start?\n\nSee our guide to [Merchant Onboarding](https://developers.boxpay.tech/docs/merchant-onboarding/).\n\n"
     },
     "servers": [
         {
-            "url": "https://apis.boxpay.in/v0",
-            "description": "Prod India"
-        },
-        {
             "url": "https://sandbox-apis.boxpay.tech/v0",
             "description": "Sandbox / Integraion / Test"
+        },
+        {
+            "url": "https://apis.boxpay.in/v0",
+            "description": "Prod India"
         }
     ],
     "security": [
@@ -212,9 +212,106 @@
                     "201": {
                         "description": "Created",
                         "content": {
-                            "*/*": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PaymentResponse"
+                            "application/json": {
+                                "examples": {
+                                    "Payment Response": {
+                                        "description": "Example response body for payment",
+                                        "value": {
+                                            "operationId": "a5KUQSkP84",
+                                            "eventId": "",
+                                            "status": {
+                                                "operation": "Authorisation",
+                                                "status": "Received",
+                                                "reason": "",
+                                                "reasonCode": ""
+                                            },
+                                            "captureRequired": false,
+                                            "legalEntityCode": "",
+                                            "clientPosId": "",
+                                            "orderId": "",
+                                            "caller": {
+                                                "token": "",
+                                                "callerType": "CHECKOUT"
+                                            },
+                                            "pspCode": "WORLDPAY",
+                                            "pspReference": "",
+                                            "pspOperationItems": [
+                                                {
+                                                    "pspReference": "",
+                                                    "money": {
+                                                        "amount": null,
+                                                        "currencyCode": "AFN"
+                                                    },
+                                                    "status": "Received",
+                                                    "reason": ""
+                                                }
+                                            ],
+                                            "timestamp": "",
+                                            "authCode": "",
+                                            "money": {
+                                                "amount": null,
+                                                "currencyCode": "AFN"
+                                            },
+                                            "actions": [
+                                                ""
+                                            ],
+                                            "additionalData": {},
+                                            "pspErrorDetails": {
+                                                "pspError": {
+                                                    "code": "",
+                                                    "description": ""
+                                                },
+                                                "networkError": {
+                                                    "code": "",
+                                                    "description": ""
+                                                },
+                                                "issuerError": {
+                                                    "code": "",
+                                                    "description": ""
+                                                }
+                                            },
+                                            "shopper": {
+                                                "firstName": "",
+                                                "lastName": "",
+                                                "gender": "MALE",
+                                                "phoneNumber": "",
+                                                "email": "",
+                                                "uniqueReference": "",
+                                                "deliveryAddress": {
+                                                    "address1": "",
+                                                    "address2": "",
+                                                    "address3": "",
+                                                    "city": "",
+                                                    "state": "",
+                                                    "countryCode": "AD",
+                                                    "postalCode": "",
+                                                    "countryName": ""
+                                                }
+                                            },
+                                            "paymentMethod": {
+                                                "type": "Card",
+                                                "brand": "VISA",
+                                                "classification": "Credit",
+                                                "subBrand": ""
+                                            },
+                                            "recurring": {
+                                                "instruction": {
+                                                    "enabled": false,
+                                                    "expiry": "",
+                                                    "minAmount": null,
+                                                    "maxAmount": null
+                                                },
+                                                "reference": {
+                                                    "source": "",
+                                                    "token": ""
+                                                },
+                                                "pspReference": {
+                                                    "source": "",
+                                                    "token": ""
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3382,6 +3479,55 @@
                     }
                 }
             },
+            "CaptureOptions": {
+                "type": "object",
+                "properties": {
+                    "sequenceNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "PaymentCaptureRefundRequest": {
+                "required": [
+                    "money"
+                ],
+                "type": "object",
+                "properties": {
+                    "requestId": {
+                        "type": "string"
+                    },
+                    "money": {
+                        "$ref": "#/components/schemas/Money"
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/OrderDetails"
+                    },
+                    "captureOptions": {
+                        "$ref": "#/components/schemas/CaptureOptions"
+                    },
+                    "refundReason": {
+                        "type": "string",
+                        "enum": [
+                            "requestedByCustomer",
+                            "duplicateOrder",
+                            "wrongItemDelivered",
+                            "fraudulentActivity",
+                            "itemNotAsDescribed",
+                            "customerDissatisfaction",
+                            "itemNotInStock",
+                            "others"
+                        ]
+                    },
+                    "customRefundReason": {
+                        "type": "string"
+                    }
+                }
+            },
             "Caller": {
                 "type": "object",
                 "properties": {
@@ -5206,55 +5352,6 @@
                     }
                 }
             },
-            "CaptureOptions": {
-                "type": "object",
-                "properties": {
-                    "sequenceNumber": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "totalCount": {
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                }
-            },
-            "PaymentCaptureRefundRequest": {
-                "required": [
-                    "money"
-                ],
-                "type": "object",
-                "properties": {
-                    "requestId": {
-                        "type": "string"
-                    },
-                    "money": {
-                        "$ref": "#/components/schemas/Money"
-                    },
-                    "order": {
-                        "$ref": "#/components/schemas/OrderDetails"
-                    },
-                    "captureOptions": {
-                        "$ref": "#/components/schemas/CaptureOptions"
-                    },
-                    "refundReason": {
-                        "type": "string",
-                        "enum": [
-                            "requestedByCustomer",
-                            "duplicateOrder",
-                            "wrongItemDelivered",
-                            "fraudulentActivity",
-                            "itemNotAsDescribed",
-                            "customerDissatisfaction",
-                            "itemNotInStock",
-                            "others"
-                        ]
-                    },
-                    "customRefundReason": {
-                        "type": "string"
-                    }
-                }
-            },
             "OperationInquiry": {
                 "type": "object",
                 "properties": {
@@ -5561,12 +5658,11 @@
         },
         "securitySchemes": {
             "API Key": {
-                "type": "apiKey",
+                "type": "http",
                 "description": "API Key to call BoxPay APIs. You can fetch API Key from 'API Credentials' page under 'Developers' menu from the sidebar in Merchant Dashboard.",
                 "name": "Authorization",
                 "in": "header",
-                "scheme": "bearer",
-                "bearerFormat": "Bearer {{apiKey}}"
+                "scheme": "bearer"
             }
         }
     }
