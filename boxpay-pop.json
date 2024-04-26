@@ -189,8 +189,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -199,8 +199,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -269,8 +269,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -279,8 +279,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -349,8 +349,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -359,8 +359,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -419,8 +419,8 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -429,8 +429,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -481,8 +481,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -491,8 +491,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -553,8 +553,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -563,8 +563,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -662,8 +662,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -672,8 +672,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -5565,7 +5565,8 @@
                 "description": "API Key to call BoxPay APIs. You can fetch API Key from 'API Credentials' page under 'Developers' menu from the sidebar in Merchant Dashboard.",
                 "name": "Authorization",
                 "in": "header",
-                "scheme": "bearer"
+                "scheme": "bearer",
+                "bearerFormat": "Bearer {{apiKey}}"
             }
         }
     }
