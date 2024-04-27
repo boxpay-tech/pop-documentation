@@ -36,7 +36,7 @@
                 "tags": [
                     "Payment APIs"
                 ],
-                "summary": "Initiate a payment transaction",
+                "summary": "Initiate a payment",
                 "description": "This endpoint initiates a payment transaction for a specified merchant.",
                 "operationId": "createPayment",
                 "parameters": [
@@ -190,22 +190,6 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Bad Request Error": {
-                                        "description": "Example response body for bad request",
-                                        "value": "\n  \"errorCode\": \"required_body\",\n  \"message\": \"\",\n  \"timestamp\": \"\",\n  \"fieldErrorItems\": [\n    {\n      \"message\": \"\",\n      \"fieldErrorCode\": \"required_value\"\n    }\n  ],\n  \"retryable\": false,\n  \"reasonCode\": \"\"\n}"
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "",
                         "content": {
@@ -223,6 +207,34 @@
                                             "fieldErrorItems": [],
                                             "retryable": true,
                                             "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Bad Request Error": {
+                                        "description": "Example response body for bad request",
+                                        "value": {
+                                            "errorCode": "required_body",
+                                            "message": "",
+                                            "timestamp": "",
+                                            "fieldErrorItems": [
+                                                {
+                                                    "message": "",
+                                                    "fieldErrorCode": "required_value"
+                                                }
+                                            ],
+                                            "retryable": false,
+                                            "reasonCode": ""
                                         }
                                     }
                                 }
@@ -347,7 +359,7 @@
                 "tags": [
                     "Payment APIs"
                 ],
-                "summary": "Refund a payment transaction",
+                "summary": "Refund a payment",
                 "description": "This endpoint initiates a refund for the provided amount if the payment was successfully authorised.",
                 "operationId": "refundPayment",
                 "parameters": [
@@ -391,8 +403,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -401,8 +413,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -429,7 +441,7 @@
                 "tags": [
                     "Payment APIs"
                 ],
-                "summary": "Capture a payment transaction",
+                "summary": "Capture a payment",
                 "description": "This endpoint initiates a capture for the provided amount if the payment was successfully authorised.",
                 "operationId": "capturePayment",
                 "parameters": [
@@ -473,8 +485,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -483,8 +495,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -511,7 +523,7 @@
                 "tags": [
                     "Payment APIs"
                 ],
-                "summary": "Cancel a payment transaction",
+                "summary": "Cancel a payment",
                 "description": "This endpoint allows to cancel a payment transaction if there hasn't been any sale, captures or refunds operations on this transaction",
                 "operationId": "cancelPayment",
                 "parameters": [
@@ -545,8 +557,8 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -555,8 +567,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -609,8 +621,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -619,8 +631,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -667,28 +679,116 @@
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/PaymentCheckoutRequest"
+                            },
+                            "examples": {
+                                "Checkout": {
+                                    "description": "Sample Request Body for Checkout",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "legal_entity"
+                                            },
+                                            "orderId": "test12",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "A",
+                                        "money": {
+                                            "amount": "7568.50",
+                                            "currencyCode": "USD"
+                                        },
+                                        "shopper": {
+                                            "uniqueReference": "uniqueRef"
+                                        },
+                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                    }
+                                },
+                                "Checkout with Shopper Details": {
+                                    "description": "Sample Request Body for Checkout with Shopper Details",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "legal_entity"
+                                            },
+                                            "orderId": "test12",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "A",
+                                        "money": {
+                                            "amount": "7568.50",
+                                            "currencyCode": "USD"
+                                        },
+                                        "shopper": {
+                                            "firstName": "Demo",
+                                            "lastName": "User",
+                                            "email": "demo@boxpay.tech",
+                                            "uniqueReference": "shopperRef",
+                                            "phoneNumber": "+911234567890",
+                                            "gender": "Male",
+                                            "deliveryAddress": {
+                                                "address1": "123 Main Street",
+                                                "city": "Gurugram",
+                                                "state": "Haryana",
+                                                "countryCode": "IN",
+                                                "postalCode": "122001"
+                                            }
+                                        },
+                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                    }
+                                },
+                                "Checkout with Order Details": {
+                                    "description": "Sample Request Body for Checkout with Order Details",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "legal_entity"
+                                            },
+                                            "orderId": "test12",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "A",
+                                        "money": {
+                                            "amount": "7568.50",
+                                            "currencyCode": "USD"
+                                        },
+                                        "shopper": {
+                                            "uniqueReference": "uniqueRef"
+                                        },
+                                        "order": {
+                                            "shippingAmount": 10.5,
+                                            "taxAmount": 5.25,
+                                            "originalAmount": 100.0,
+                                            "totalDiscountedAmount": 90.0,
+                                            "items": [
+                                                {
+                                                    "id": "test",
+                                                    "itemName": "test_name",
+                                                    "description": "test_description",
+                                                    "imageUrl": "",
+                                                    "amountWithoutTax": 60,
+                                                    "quantity": 1
+                                                },
+                                                {
+                                                    "id": "test2",
+                                                    "itemName": "test_name2",
+                                                    "description": "test_description2",
+                                                    "imageUrl": "",
+                                                    "amountWithoutTax": 40,
+                                                    "quantity": 1
+                                                }
+                                            ]
+                                        },
+                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                    }
+                                }
                             }
                         }
                     },
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Bad Request Error": {
-                                        "description": "Example response body for bad request",
-                                        "value": "\n  \"errorCode\": \"required_body\",\n  \"message\": \"\",\n  \"timestamp\": \"\",\n  \"fieldErrorItems\": [\n    {\n      \"message\": \"\",\n      \"fieldErrorCode\": \"required_value\"\n    }\n  ],\n  \"retryable\": false,\n  \"reasonCode\": \"\"\n}"
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "",
                         "content": {
@@ -706,6 +806,34 @@
                                             "fieldErrorItems": [],
                                             "retryable": true,
                                             "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Bad Request Error": {
+                                        "description": "Example response body for bad request",
+                                        "value": {
+                                            "errorCode": "required_body",
+                                            "message": "",
+                                            "timestamp": "",
+                                            "fieldErrorItems": [
+                                                {
+                                                    "message": "",
+                                                    "fieldErrorCode": "required_value"
+                                                }
+                                            ],
+                                            "retryable": false,
+                                            "reasonCode": ""
                                         }
                                     }
                                 }
@@ -743,14 +871,6 @@
                 "description": "This endpoint generates a payment link for a specified merchant.",
                 "operationId": "createPaymentLinkSession",
                 "parameters": [
-                    {
-                        "name": "X-User-Id",
-                        "in": "header",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
                     {
                         "name": "merchantId",
                         "in": "path",
@@ -794,6 +914,10 @@
                                         },
                                         "statusNotifyUrl": "https://www.boxpay.tech"
                                     }
+                                },
+                                "Payment Link with Product": {
+                                    "description": "Example request body for Payment Link with Product",
+                                    "value": "{\n    \"title\" : \"sample_title_product\",\n    \"description\" : \"sampleText\",\n    \"context\": {\n        \"countryCode\": \"IN\",\n        \"legalEntity\": {\n            \"code\": \"legal_entity\"\n        },\n        \"orderId\": \"test12\",\n        \"localCode\": \"fr-FR\"\n    },\n    \"paymentType\": \"S\",\n    \"money\": {\n        \"amount\": \"452.00\",\n        \"currencyCode\": \"INR\"\n    },\n    \"shopper\": {\n        \"email\": \"name@boxpay.tech\",\n        \"phoneNumber\": \"+91123456789\",\n        \"uniqueReference\" : \"uniqueRef\"\n    },\n    \"productCode\": \"CODE12\",\n    \"notifyViaEmail\": true,\n    \"expiryDurationSec: 15000\n}"
                                 }
                             }
                         }
@@ -801,22 +925,6 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Bad Request Error": {
-                                        "description": "Example response body for bad request",
-                                        "value": "\n  \"errorCode\": \"required_body\",\n  \"message\": \"\",\n  \"timestamp\": \"\",\n  \"fieldErrorItems\": [\n    {\n      \"message\": \"\",\n      \"fieldErrorCode\": \"required_value\"\n    }\n  ],\n  \"retryable\": false,\n  \"reasonCode\": \"\"\n}"
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "500": {
                         "description": "",
                         "content": {
@@ -834,6 +942,34 @@
                                             "fieldErrorItems": [],
                                             "retryable": true,
                                             "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Bad Request Error": {
+                                        "description": "Example response body for bad request",
+                                        "value": {
+                                            "errorCode": "required_body",
+                                            "message": "",
+                                            "timestamp": "",
+                                            "fieldErrorItems": [
+                                                {
+                                                    "message": "",
+                                                    "fieldErrorCode": "required_value"
+                                                }
+                                            ],
+                                            "retryable": false,
+                                            "reasonCode": ""
                                         }
                                     }
                                 }
