@@ -307,7 +307,7 @@
                                         }
                                     }
                                 },
-                                "Recurring Transaction with Recurring Reference": {
+                                "Subsequent Recurring Transaction": {
                                     "description": "Example request body for Recurring transaction with Recurring Reference",
                                     "value": {
                                         "context": {
@@ -372,6 +372,29 @@
                     "required": true
                 },
                 "responses": {
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -394,29 +417,6 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -583,8 +583,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -593,8 +593,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -665,8 +665,8 @@
                     "required": true
                 },
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -675,8 +675,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -737,8 +737,8 @@
                     }
                 ],
                 "responses": {
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -747,8 +747,8 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -819,6 +819,29 @@
                     "required": true
                 },
                 "responses": {
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -841,29 +864,6 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -1109,6 +1109,54 @@
                                         },
                                         "frontendBackUrl": "https://www.boxpay.tech"
                                     }
+                                },
+                                "Checkout with Subscription Details": {
+                                    "description": "Sample Request Body for Checkout with Subscription Details",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "YOUR_BUSINESS_UNIT_CODE"
+                                            },
+                                            "orderId": "test12",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "S",
+                                        "money": {
+                                            "amount": "7568.50",
+                                            "currencyCode": "INR"
+                                        },
+                                        "shopper": {
+                                            "uniqueReference": "uniqueRef"
+                                        },
+                                        "order": {
+                                            "totalDiscountedAmount": "600",
+                                            "originalAmount": "1000",
+                                            "items": [
+                                                {
+                                                    "itemName": "GYM",
+                                                    "quantity": "1",
+                                                    "imageUrl": "https://google.co.in",
+                                                    "amountWithoutTax": "1000",
+                                                    "discountedAmount": "600"
+                                                }
+                                            ]
+                                        },
+                                        "subscription": {
+                                            "type": "Product",
+                                            "billingCycle": {
+                                                "billingTimeUnit": "Monthly",
+                                                "count": "1"
+                                            },
+                                            "billingDuration": {
+                                                "type": "FixedCycle",
+                                                "noOfCycles": "5"
+                                            },
+                                            "recurringExpiryDate": "2025-08-28T15:30:30.123456Z",
+                                            "maxAmount": "999"
+                                        },
+                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                    }
                                 }
                             }
                         }
@@ -1116,6 +1164,29 @@
                     "required": true
                 },
                 "responses": {
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -1144,29 +1215,6 @@
                             }
                         }
                     },
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "201": {
                         "description": "Created",
                         "content": {
@@ -1189,7 +1237,7 @@
                 }
             }
         },
-        "/merchants/{merchantId}/recurring/pre-debit/notifications/send": {
+        "/merchants/{merchantId}/recurring/pre-debit/notifications": {
             "post": {
                 "tags": [
                     "Recurring Notification APIs"
@@ -1227,7 +1275,7 @@
                                             "amount": "1200",
                                             "currencyCode": "INR"
                                         },
-                                        "autoDebit": true
+                                        "autoDebit": false
                                     }
                                 }
                             }
@@ -1236,6 +1284,29 @@
                     "required": true
                 },
                 "responses": {
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -1258,29 +1329,6 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -1400,6 +1448,29 @@
                     "required": true
                 },
                 "responses": {
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -1422,29 +1493,6 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -1514,6 +1562,29 @@
                     }
                 ],
                 "responses": {
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -1536,29 +1607,6 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -4248,7 +4296,8 @@
                     "token": {
                         "type": "string"
                     }
-                }
+                },
+                "description": "BoxPay token details of Recurring transaction received in initial recurring transaction response / webhook"
             },
             "TrackingDetails": {
                 "type": "object",
@@ -6268,21 +6317,25 @@
                 "type": "object",
                 "properties": {
                     "notificationId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Unique Id of the notification. This will be used in recurring transaction request"
                     },
                     "pspNotificationRef": {
                         "type": "string"
                     },
                     "validFrom": {
                         "type": "string",
+                        "description": "Date and time the notification is valid from",
                         "format": "date-time"
                     },
                     "validTo": {
                         "type": "string",
+                        "description": "Date and time the notification is valid to",
                         "format": "date-time"
                     },
                     "autoDebitEnabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Specifies whether autoDebit is enabled or not"
                     },
                     "status": {
                         "type": "string",
