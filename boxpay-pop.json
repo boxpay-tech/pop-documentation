@@ -24,6 +24,9 @@
             "name": "Payment APIs"
         },
         {
+            "name": "Recurring Notification APIs"
+        },
+        {
             "name": "Checkout Session APIs"
         },
         {
@@ -183,6 +186,185 @@
                                         "statusNotifyUrl": "https://www.boxpay.tech",
                                         "frontendBackUrl": "https://www.boxpay.tech"
                                     }
+                                },
+                                "Upi Collect Transaction": {
+                                    "description": "Example request body for Upi Collect Transaction",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "YOUR_BUSINESS_UNIT_CODE"
+                                            },
+                                            "clientPosId": "Singapore",
+                                            "orderId": "475hb",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "S",
+                                        "moneyInstruction": {
+                                            "money": {
+                                                "amount": "785.50",
+                                                "currencyCode": "INR"
+                                            },
+                                            "descriptor": {
+                                                "line1": "Some descriptor"
+                                            },
+                                            "instrument": {
+                                                "type": "upi/collect",
+                                                "upi": {
+                                                    "shopperVpa": "test@boxpay"
+                                                }
+                                            },
+                                            "billingAddress": {
+                                                "address1": "first address line",
+                                                "address2": "second address line",
+                                                "city": "Singapore",
+                                                "state": "Singapore",
+                                                "countryCode": "SG",
+                                                "postalCode": "079120"
+                                            }
+                                        },
+                                        "shopper": {
+                                            "firstName": "John",
+                                            "lastName": "Smith",
+                                            "email": "johnsmith@boxpay.tech",
+                                            "uniqueReference": "uniRef",
+                                            "phoneNumber": "7895982986"
+                                        },
+                                        "shopperAuthentication": {
+                                            "threeDSAuthentication": "No"
+                                        },
+                                        "browserData": {
+                                            "browserLanguage": "en-US",
+                                            "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                                            "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+                                            "ipAddress": "123.123.123.123"
+                                        },
+                                        "frontendReturnUrl": "https://www.boxpay.tech",
+                                        "statusNotifyUrl": "https://www.boxpay.tech",
+                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                    }
+                                },
+                                "Registering Recurring Transaction": {
+                                    "description": "Example request body for initial recuuring transaction",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "YOUR_BUSINESS_UNIT_CODE"
+                                            },
+                                            "clientPosId": "Singapore",
+                                            "orderId": "475hb",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "S",
+                                        "moneyInstruction": {
+                                            "money": {
+                                                "amount": "785.50",
+                                                "currencyCode": "INR"
+                                            },
+                                            "descriptor": {
+                                                "line1": "Some descriptor"
+                                            },
+                                            "instrument": {
+                                                "type": "upi/collect",
+                                                "upi": {
+                                                    "shopperVpa": "test@boxpay"
+                                                }
+                                            },
+                                            "billingAddress": {
+                                                "address1": "first address line",
+                                                "address2": "second address line",
+                                                "city": "Singapore",
+                                                "state": "Singapore",
+                                                "countryCode": "SG",
+                                                "postalCode": "079120"
+                                            }
+                                        },
+                                        "shopper": {
+                                            "firstName": "John",
+                                            "lastName": "Smith",
+                                            "email": "johnsmith@boxpay.tech",
+                                            "uniqueReference": "uniRef",
+                                            "phoneNumber": "7895982986"
+                                        },
+                                        "shopperAuthentication": {
+                                            "threeDSAuthentication": "No"
+                                        },
+                                        "browserData": {
+                                            "browserLanguage": "en-US",
+                                            "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                                            "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+                                            "ipAddress": "123.123.123.123"
+                                        },
+                                        "frontendReturnUrl": "https://www.boxpay.tech",
+                                        "statusNotifyUrl": "https://www.boxpay.tech",
+                                        "frontendBackUrl": "https://www.boxpay.tech",
+                                        "recurring": {
+                                            "enabled": true,
+                                            "expiry": "2025-03-19T18:11:57Z",
+                                            "minAmount": "10",
+                                            "maxAmount": "10000"
+                                        }
+                                    }
+                                },
+                                "Recurring Transaction with Recurring Reference": {
+                                    "description": "Example request body for Recurring transaction with Recurring Reference",
+                                    "value": {
+                                        "context": {
+                                            "countryCode": "IN",
+                                            "legalEntity": {
+                                                "code": "YOUR_BUSINESS_UNIT_CODE"
+                                            },
+                                            "clientPosId": "Haryana",
+                                            "orderId": "test12",
+                                            "localCode": "fr-FR"
+                                        },
+                                        "paymentType": "S",
+                                        "moneyInstruction": {
+                                            "money": {
+                                                "amount": "2005.50",
+                                                "currencyCode": "INR"
+                                            },
+                                            "descriptor": {
+                                                "line1": "Some descriptor"
+                                            },
+                                            "instrument": {
+                                                "type": "recurring/token",
+                                                "recurringReference": {
+                                                    "tokenDetails": {
+                                                        "source": "payorch/BOXPAY",
+                                                        "token": "YOUR_TOKEN"
+                                                    }
+                                                }
+                                            },
+                                            "billingAddress": {
+                                                "address1": "first address line",
+                                                "address2": "second address line",
+                                                "city": "Faridabad",
+                                                "state": "Haryana",
+                                                "countryCode": "IN",
+                                                "postalCode": "121004"
+                                            }
+                                        },
+                                        "shopper": {
+                                            "firstName": "Shobhit",
+                                            "lastName": "Mehra",
+                                            "email": "shobhit@boxpay.tech",
+                                            "uniqueReference": "uniRef"
+                                        },
+                                        "shopperAuthentication": {
+                                            "threeDSAuthentication": "No"
+                                        },
+                                        "browserData": {
+                                            "browserLanguage": "en-US",
+                                            "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                                            "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+                                            "ipAddress": "123.123.123.123"
+                                        },
+                                        "frontendReturnUrl": "https://www.google.com",
+                                        "statusNotifyUrl": "https://www.boxpay.tech",
+                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                    }
                                 }
                             }
                         }
@@ -190,29 +372,6 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -235,6 +394,29 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -331,18 +513,16 @@
                                             },
                                             "recurring": {
                                                 "instruction": {
-                                                    "enabled": false,
-                                                    "expiry": "",
-                                                    "minAmount": null,
-                                                    "maxAmount": null
+                                                    "enabled": true,
+                                                    "expiry": "2025-03-19T18:11:57Z",
+                                                    "minAmount": 10,
+                                                    "maxAmount": 10000
                                                 },
                                                 "reference": {
-                                                    "source": "",
-                                                    "token": ""
-                                                },
-                                                "pspReference": {
-                                                    "source": "",
-                                                    "token": ""
+                                                    "tokenDetails": {
+                                                        "source": "payorch/BOXPAY",
+                                                        "token": "YOUR_TOKEN"
+                                                    }
                                                 }
                                             }
                                         }
@@ -403,8 +583,8 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -413,8 +593,8 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -485,8 +665,8 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -495,8 +675,8 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -557,8 +737,8 @@
                     }
                 ],
                 "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
+                    "400": {
+                        "description": "Bad Request",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -567,8 +747,8 @@
                             }
                         }
                     },
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "content": {
                             "*/*": {
                                 "schema": {
@@ -639,29 +819,6 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -684,6 +841,29 @@
                                             ],
                                             "retryable": false,
                                             "reasonCode": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
                                         }
                                     }
                                 }
@@ -780,18 +960,16 @@
                                             },
                                             "recurring": {
                                                 "instruction": {
-                                                    "enabled": false,
-                                                    "expiry": "",
-                                                    "minAmount": null,
-                                                    "maxAmount": null
+                                                    "enabled": true,
+                                                    "expiry": "2025-03-19T18:11:57Z",
+                                                    "minAmount": 10,
+                                                    "maxAmount": 10000
                                                 },
                                                 "reference": {
-                                                    "source": "",
-                                                    "token": ""
-                                                },
-                                                "pspReference": {
-                                                    "source": "",
-                                                    "token": ""
+                                                    "tokenDetails": {
+                                                        "source": "payorch/BOXPAY",
+                                                        "token": "YOUR_TOKEN"
+                                                    }
                                                 }
                                             }
                                         }
@@ -938,29 +1116,6 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -989,6 +1144,29 @@
                             }
                         }
                     },
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "201": {
                         "description": "Created",
                         "content": {
@@ -1002,6 +1180,130 @@
                                         "value": {
                                             "token": "",
                                             "url": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/merchants/{merchantId}/recurring/pre-debit/notifications/send": {
+            "post": {
+                "tags": [
+                    "Recurring Notification APIs"
+                ],
+                "summary": "Notify shopper for recurring payment",
+                "description": "This endpoint sends notification to shopper for recurring transaction",
+                "operationId": "sendPreDebitNotification",
+                "parameters": [
+                    {
+                        "name": "merchantId",
+                        "in": "path",
+                        "description": "BoxPay unique ID assigned to Merchants",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "YOUR_MERCHANT_ID"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PspRecurringPaymentNotificationRequest"
+                            },
+                            "examples": {
+                                "Notification for Recurring Transaction": {
+                                    "description": "Example request body for sending notification",
+                                    "value": {
+                                        "tokenDetails": {
+                                            "source": "payorch/BOXPAY",
+                                            "token": "YOUR_TOKEN"
+                                        },
+                                        "money": {
+                                            "amount": "1200",
+                                            "currencyCode": "INR"
+                                        },
+                                        "autoDebit": true
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Bad Request Error": {
+                                        "description": "Example response body for bad request",
+                                        "value": {
+                                            "errorCode": "required_body",
+                                            "message": "",
+                                            "timestamp": "",
+                                            "fieldErrorItems": [
+                                                {
+                                                    "message": "",
+                                                    "fieldErrorCode": "required_value"
+                                                }
+                                            ],
+                                            "retryable": false,
+                                            "reasonCode": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PspRecurringPaymentNotificationEntity"
+                                },
+                                "examples": {
+                                    "Recurring Notification Response": {
+                                        "description": "Example response body for recurring notification",
+                                        "value": {
+                                            "notificationId": "kyfFEqW89y",
+                                            "pspNotificationRef": "OM2405211006527017809345",
+                                            "validFrom": "2024-05-21T04:36:53.454Z",
+                                            "validTo": "2024-05-23T04:36:53.454Z",
+                                            "autoDebitEnabled": false,
+                                            "status": "Success"
                                         }
                                     }
                                 }
@@ -1098,29 +1400,6 @@
                     "required": true
                 },
                 "responses": {
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "400": {
                         "description": "",
                         "content": {
@@ -1149,6 +1428,29 @@
                             }
                         }
                     },
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "201": {
                         "description": "Created",
                         "content": {
@@ -1162,6 +1464,124 @@
                                         "value": {
                                             "token": "",
                                             "url": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/merchants/{merchantId}/recurring/pre-debit/tokens/{token}/notifications/{notificationId}": {
+            "get": {
+                "tags": [
+                    "Recurring Notification APIs"
+                ],
+                "summary": "Get notification for a token",
+                "description": "This endpoint fetches the detail of a notification",
+                "operationId": "getNotification",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "Token for recurring transactions which is received in payment response of initial recurring transaction",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "YOUR_TOKEN"
+                    },
+                    {
+                        "name": "merchantId",
+                        "in": "path",
+                        "description": "BoxPay unique ID assigned to Merchants",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "YOUR_MERCHANT_ID"
+                    },
+                    {
+                        "name": "notificationId",
+                        "in": "path",
+                        "description": "Notification Id provided in the response of send notification API",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "YOUR_NOTIFICATION_ID"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Bad Request Error": {
+                                        "description": "Example response body for bad request",
+                                        "value": {
+                                            "errorCode": "required_body",
+                                            "message": "",
+                                            "timestamp": "",
+                                            "fieldErrorItems": [
+                                                {
+                                                    "message": "",
+                                                    "fieldErrorCode": "required_value"
+                                                }
+                                            ],
+                                            "retryable": false,
+                                            "reasonCode": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorDetails"
+                                },
+                                "examples": {
+                                    "Internal Server Error": {
+                                        "description": "Example response body for internal server error",
+                                        "value": {
+                                            "errorCode": "unexpected_error",
+                                            "message": "Unexpected error occurred on server",
+                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
+                                            "fieldErrorItems": [],
+                                            "retryable": true,
+                                            "reasonCode": "CF_0035"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PspRecurringPaymentNotificationEntity"
+                                },
+                                "examples": {
+                                    "Recurring Notification Response": {
+                                        "description": "Example response body for recurring notification",
+                                        "value": {
+                                            "notificationId": "kyfFEqW89y",
+                                            "pspNotificationRef": "OM2405211006527017809345",
+                                            "validFrom": "2024-05-21T04:36:53.454Z",
+                                            "validTo": "2024-05-23T04:36:53.454Z",
+                                            "autoDebitEnabled": false,
+                                            "status": "Success"
                                         }
                                     }
                                 }
@@ -2132,6 +2552,9 @@
                     },
                     "browserFingerPrint": {
                         "type": "string"
+                    },
+                    "packageId": {
+                        "type": "string"
                     }
                 }
             },
@@ -2227,6 +2650,8 @@
                             "Bankcard",
                             "Eftpos",
                             "Bajaj",
+                            "KNET",
+                            "Benifit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -2257,7 +2682,6 @@
                             "CashAppPay",
                             "JioPayWallet",
                             "EbixCashWallet",
-                            "HdfcPayZapp",
                             "ItzCash",
                             "MoneyOnMobile",
                             "OlaMoney",
@@ -2288,6 +2712,7 @@
                             "LazyPay",
                             "Affirm",
                             "Klarna",
+                            "Tabby",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "StateBankOfIndia",
@@ -2510,6 +2935,8 @@
                             "CARD_META",
                             "CARD_PLAIN",
                             "CARD_TOKEN",
+                            "CARD_KNET",
+                            "CARD_BENEFIT",
                             "WALLET_ALIPAY",
                             "WALLET_ALIPAY_HK",
                             "WALLET_AMAZON_PAY",
@@ -2537,7 +2964,6 @@
                             "WALLET_CASH_APP_PAY",
                             "WALLET_JIOPAY",
                             "WALLET_EBIX_CASH",
-                            "WALLET_HDFC_PAYZAPP",
                             "WALLET_ITZ_CASH",
                             "WALLET_MONEY_ON_MOBILE",
                             "WALLET_OLA_MONEY",
@@ -2571,6 +2997,7 @@
                             "BNPL_GETSIMPL",
                             "BNPL_HDFC",
                             "BNPL_LAZYPAY",
+                            "BNPL_TABBY",
                             "NET_BANKING",
                             "NET_BANKING_KOTAK_MAHINDRA_BANK",
                             "NET_BANKING_STATE_BANK_OF_INDIA",
@@ -3410,6 +3837,8 @@
                             "Bankcard",
                             "Eftpos",
                             "Bajaj",
+                            "KNET",
+                            "Benifit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -3440,7 +3869,6 @@
                             "CashAppPay",
                             "JioPayWallet",
                             "EbixCashWallet",
-                            "HdfcPayZapp",
                             "ItzCash",
                             "MoneyOnMobile",
                             "OlaMoney",
@@ -3471,6 +3899,7 @@
                             "LazyPay",
                             "Affirm",
                             "Klarna",
+                            "Tabby",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "StateBankOfIndia",
@@ -3699,6 +4128,12 @@
                         },
                         "description": "Key-value pairs for storing additional information about the payment request. A maximum of 7 key-value pairs is allowed Each pair should have a not-null key with a maximum of 20 characters and a not-null value with a maximum of 100 characters. "
                     },
+                    "offers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "transactionId": {
                         "type": "string"
                     },
@@ -3738,7 +4173,8 @@
                     "maxAmount": {
                         "type": "number"
                     }
-                }
+                },
+                "description": "Instruction of the initial/registering recurring transaction"
             },
             "RecurringReference": {
                 "type": "object",
@@ -3789,6 +4225,9 @@
                         "type": "string"
                     },
                     "uniqueReference": {
+                        "maxLength": 36,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9_+-]*$",
                         "type": "string"
                     },
                     "deliveryAddress": {
@@ -3922,6 +4361,8 @@
                             "Bankcard",
                             "Eftpos",
                             "Bajaj",
+                            "KNET",
+                            "Benifit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -3952,7 +4393,6 @@
                             "CashAppPay",
                             "JioPayWallet",
                             "EbixCashWallet",
-                            "HdfcPayZapp",
                             "ItzCash",
                             "MoneyOnMobile",
                             "OlaMoney",
@@ -3983,6 +4423,7 @@
                             "LazyPay",
                             "Affirm",
                             "Klarna",
+                            "Tabby",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "StateBankOfIndia",
@@ -4180,6 +4621,8 @@
                             "Bankcard",
                             "Eftpos",
                             "Bajaj",
+                            "KNET",
+                            "Benifit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -4210,7 +4653,6 @@
                             "CashAppPay",
                             "JioPayWallet",
                             "EbixCashWallet",
-                            "HdfcPayZapp",
                             "ItzCash",
                             "MoneyOnMobile",
                             "OlaMoney",
@@ -4241,6 +4683,7 @@
                             "LazyPay",
                             "Affirm",
                             "Klarna",
+                            "Tabby",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "StateBankOfIndia",
@@ -4438,6 +4881,8 @@
                             "Bankcard",
                             "Eftpos",
                             "Bajaj",
+                            "KNET",
+                            "Benifit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -4468,7 +4913,6 @@
                             "CashAppPay",
                             "JioPayWallet",
                             "EbixCashWallet",
-                            "HdfcPayZapp",
                             "ItzCash",
                             "MoneyOnMobile",
                             "OlaMoney",
@@ -4499,6 +4943,7 @@
                             "LazyPay",
                             "Affirm",
                             "Klarna",
+                            "Tabby",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "StateBankOfIndia",
@@ -4671,9 +5116,6 @@
                     "interestRate": {
                         "type": "number"
                     },
-                    "merchantBorneInterestRate": {
-                        "type": "number"
-                    },
                     "minAmount": {
                         "type": "number"
                     },
@@ -4803,6 +5245,8 @@
                             "Bankcard",
                             "Eftpos",
                             "Bajaj",
+                            "KNET",
+                            "Benifit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -4833,7 +5277,6 @@
                             "CashAppPay",
                             "JioPayWallet",
                             "EbixCashWallet",
-                            "HdfcPayZapp",
                             "ItzCash",
                             "MoneyOnMobile",
                             "OlaMoney",
@@ -4864,6 +5307,7 @@
                             "LazyPay",
                             "Affirm",
                             "Klarna",
+                            "Tabby",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "StateBankOfIndia",
@@ -5397,6 +5841,7 @@
                             "RAZORPAY",
                             "PHONEPE",
                             "EASEBUZZ",
+                            "TAP",
                             "NONE"
                         ]
                     },
@@ -5418,6 +5863,15 @@
                     },
                     "money": {
                         "$ref": "#/components/schemas/Money"
+                    },
+                    "originalAmount": {
+                        "type": "number"
+                    },
+                    "offers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "actions": {
                         "type": "array",
@@ -5502,6 +5956,9 @@
                         ]
                     },
                     "reason": {
+                        "type": "string"
+                    },
+                    "linkedOperationId": {
                         "type": "string"
                     }
                 }
@@ -5705,6 +6162,12 @@
                         },
                         "description": "Key-value pairs for storing additional information about the payment request. A maximum of 5 key-value pairs is allowed Each pair should have a not-null key with a maximum of 20 characters and a not-null value with a maximum of 100 characters. "
                     },
+                    "offers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "money": {
                         "$ref": "#/components/schemas/Money"
                     },
@@ -5783,6 +6246,61 @@
                 },
                 "description": "Payment link/checkout Response containing URL and token"
             },
+            "PspRecurringPaymentNotificationRequest": {
+                "required": [
+                    "tokenDetails"
+                ],
+                "type": "object",
+                "properties": {
+                    "tokenDetails": {
+                        "$ref": "#/components/schemas/TokenDetails"
+                    },
+                    "money": {
+                        "$ref": "#/components/schemas/Money"
+                    },
+                    "autoDebit": {
+                        "type": "boolean",
+                        "description": "Specifies whether autoDebit is enabled or not"
+                    }
+                }
+            },
+            "PspRecurringPaymentNotificationEntity": {
+                "type": "object",
+                "properties": {
+                    "notificationId": {
+                        "type": "string"
+                    },
+                    "pspNotificationRef": {
+                        "type": "string"
+                    },
+                    "validFrom": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "validTo": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "autoDebitEnabled": {
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "Posted",
+                            "Success",
+                            "Failed",
+                            "Received"
+                        ]
+                    },
+                    "pspReference": {
+                        "type": "string"
+                    },
+                    "transactionId": {
+                        "type": "string"
+                    }
+                }
+            },
             "PaymentLinkRequest": {
                 "required": [
                     "context",
@@ -5830,6 +6348,12 @@
                             "description": "Key-value pairs for storing additional information about the payment request. A maximum of 4 key-value pairs is allowed Each pair should have a not-null key with a maximum of 20 characters and a not-null value with a maximum of 100 characters. "
                         },
                         "description": "Key-value pairs for storing additional information about the payment request. A maximum of 4 key-value pairs is allowed Each pair should have a not-null key with a maximum of 20 characters and a not-null value with a maximum of 100 characters. "
+                    },
+                    "offers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "money": {
                         "$ref": "#/components/schemas/Money"
