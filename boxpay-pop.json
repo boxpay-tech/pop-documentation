@@ -179,9 +179,9 @@
                                             "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
                                             "ipAddress": "123.123.123.123"
                                         },
-                                        "frontendReturnUrl": "https://www.google.com",
+                                        "frontendReturnUrl": "YOUR_PAYMENT_CONFIRMATION_URL",
                                         "statusNotifyUrl": "YOUR_WEBHOOK_URL",
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 },
                                 "Upi Collect Transaction": {
@@ -358,9 +358,9 @@
                                             "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
                                             "ipAddress": "123.123.123.123"
                                         },
-                                        "frontendReturnUrl": "https://www.google.com",
+                                        "frontendReturnUrl": "YOUR_PAYMENT_CONFIRMATION_URL",
                                         "statusNotifyUrl": "YOUR_WEBHOOK_URL",
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 }
                             }
