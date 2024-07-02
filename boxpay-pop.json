@@ -111,8 +111,8 @@
                                             "firstName": "John",
                                             "lastName": "Smith",
                                             "email": "johnsmith@boxpay.tech",
-                                            "uniqueReference": "uniRef",
-                                            "phoneNumber": "7895982986"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
+                                            "phoneNumber": "+911234567890"
                                         },
                                         "shopperAuthentication": {
                                             "threeDSAuthentication": "No"
@@ -123,9 +123,9 @@
                                             "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
                                             "ipAddress": "123.123.123.123"
                                         },
-                                        "frontendReturnUrl": "https://www.boxpay.tech",
-                                        "statusNotifyUrl": "https://www.boxpay.tech",
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendReturnUrl": "YOUR_PAYMENT_CONFIRMATION_URL",
+                                        "statusNotifyUrl": "YOUR_WEBHOOK_URL",
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 },
                                 "Net Banking Transaction": {
@@ -168,7 +168,7 @@
                                             "firstName": "Shobhit",
                                             "lastName": "Mehra",
                                             "email": "shobhit@boxpay.tech",
-                                            "uniqueReference": "uniRef"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
                                         "shopperAuthentication": {
                                             "threeDSAuthentication": "No"
@@ -180,7 +180,7 @@
                                             "ipAddress": "123.123.123.123"
                                         },
                                         "frontendReturnUrl": "https://www.google.com",
-                                        "statusNotifyUrl": "https://www.boxpay.tech",
+                                        "statusNotifyUrl": "YOUR_WEBHOOK_URL",
                                         "frontendBackUrl": "https://www.boxpay.tech"
                                     }
                                 },
@@ -224,8 +224,8 @@
                                             "firstName": "John",
                                             "lastName": "Smith",
                                             "email": "johnsmith@boxpay.tech",
-                                            "uniqueReference": "uniRef",
-                                            "phoneNumber": "7895982986"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
+                                            "phoneNumber": "+911234567890"
                                         },
                                         "shopperAuthentication": {
                                             "threeDSAuthentication": "No"
@@ -236,9 +236,9 @@
                                             "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
                                             "ipAddress": "123.123.123.123"
                                         },
-                                        "frontendReturnUrl": "https://www.boxpay.tech",
-                                        "statusNotifyUrl": "https://www.boxpay.tech",
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendReturnUrl": "YOUR_PAYMENT_CONFIRMATION_URL",
+                                        "statusNotifyUrl": "YOUR_WEBHOOK_URL",
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 },
                                 "Registering Recurring Transaction": {
@@ -281,8 +281,8 @@
                                             "firstName": "John",
                                             "lastName": "Smith",
                                             "email": "johnsmith@boxpay.tech",
-                                            "uniqueReference": "uniRef",
-                                            "phoneNumber": "7895982986"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
+                                            "phoneNumber": "+911234567890"
                                         },
                                         "shopperAuthentication": {
                                             "threeDSAuthentication": "No"
@@ -293,9 +293,9 @@
                                             "userAgentHeader": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/70.0.3538.110 Safari/537.36",
                                             "ipAddress": "123.123.123.123"
                                         },
-                                        "frontendReturnUrl": "https://www.boxpay.tech",
-                                        "statusNotifyUrl": "https://www.boxpay.tech",
-                                        "frontendBackUrl": "https://www.boxpay.tech",
+                                        "frontendReturnUrl": "YOUR_PAYMENT_CONFIRMATION_URL",
+                                        "statusNotifyUrl": "YOUR_WEBHOOK_URL",
+                                        "frontendBackUrl": "YOUR_BACK_URL",
                                         "recurring": {
                                             "enabled": true,
                                             "expiry": "2025-03-19T18:11:57Z",
@@ -347,7 +347,7 @@
                                             "firstName": "Shobhit",
                                             "lastName": "Mehra",
                                             "email": "shobhit@boxpay.tech",
-                                            "uniqueReference": "uniRef"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
                                         "shopperAuthentication": {
                                             "threeDSAuthentication": "No"
@@ -359,7 +359,7 @@
                                             "ipAddress": "123.123.123.123"
                                         },
                                         "frontendReturnUrl": "https://www.google.com",
-                                        "statusNotifyUrl": "https://www.boxpay.tech",
+                                        "statusNotifyUrl": "YOUR_WEBHOOK_URL",
                                         "frontendBackUrl": "https://www.boxpay.tech"
                                     }
                                 }
@@ -489,9 +489,9 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "",
+                                                "phoneNumber": "+911234567890",
                                                 "email": "",
-                                                "uniqueReference": "",
+                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                                 "deliveryAddress": {
                                                     "address1": "",
                                                     "address2": "",
@@ -572,9 +572,9 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "",
+                                                "phoneNumber": "+911234567890",
                                                 "email": "",
-                                                "uniqueReference": "",
+                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                                 "deliveryAddress": {
                                                     "address1": "",
                                                     "address2": "",
@@ -669,9 +669,9 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "",
+                                                "phoneNumber": "+911234567890",
                                                 "email": "",
-                                                "uniqueReference": "",
+                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                                 "deliveryAddress": {
                                                     "address1": "",
                                                     "address2": "",
@@ -745,9 +745,9 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "",
+                                                "phoneNumber": "+911234567890",
                                                 "email": "",
-                                                "uniqueReference": "",
+                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                                 "deliveryAddress": {
                                                     "address1": "",
                                                     "address2": "",
@@ -1019,9 +1019,9 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "",
+                                                "phoneNumber": "+911234567890",
                                                 "email": "",
-                                                "uniqueReference": "",
+                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                                 "deliveryAddress": {
                                                     "address1": "",
                                                     "address2": "",
@@ -1379,9 +1379,9 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "",
+                                                "phoneNumber": "+911234567890",
                                                 "email": "",
-                                                "uniqueReference": "",
+                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                                 "deliveryAddress": {
                                                     "address1": "",
                                                     "address2": "",
@@ -1452,9 +1452,9 @@
                                             "currencyCode": "INR"
                                         },
                                         "shopper": {
-                                            "uniqueReference": "uniqueRef"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 },
                                 "Checkout with Shopper Details": {
@@ -1477,7 +1477,7 @@
                                             "firstName": "Demo",
                                             "lastName": "User",
                                             "email": "demo@boxpay.tech",
-                                            "uniqueReference": "shopperRef",
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
                                             "phoneNumber": "+911234567890",
                                             "gender": "Male",
                                             "deliveryAddress": {
@@ -1488,7 +1488,7 @@
                                                 "postalCode": "122001"
                                             }
                                         },
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 },
                                 "Checkout with Order Details": {
@@ -1508,7 +1508,7 @@
                                             "currencyCode": "INR"
                                         },
                                         "shopper": {
-                                            "uniqueReference": "uniqueRef"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
                                         "order": {
                                             "shippingAmount": 10.5,
@@ -1534,7 +1534,7 @@
                                                 }
                                             ]
                                         },
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 },
                                 "Checkout with Subscription Details": {
@@ -1554,7 +1554,7 @@
                                             "currencyCode": "INR"
                                         },
                                         "shopper": {
-                                            "uniqueReference": "uniqueRef"
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
                                         "order": {
                                             "totalDiscountedAmount": "600",
@@ -1582,7 +1582,7 @@
                                             "recurringExpiryDate": "2025-08-28T15:30:30.123456Z",
                                             "maxAmount": "999"
                                         },
-                                        "frontendBackUrl": "https://www.boxpay.tech"
+                                        "frontendBackUrl": "YOUR_BACK_URL"
                                     }
                                 }
                             }
@@ -1711,10 +1711,10 @@
                                         },
                                         "shopper": {
                                             "email": "name@boxpay.tech",
-                                            "phoneNumber": "+91123456789",
-                                            "uniqueReference": "uniqueRef"
+                                            "phoneNumber": "+911234567890",
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
-                                        "statusNotifyUrl": "https://www.boxpay.tech"
+                                        "statusNotifyUrl": "YOUR_WEBHOOK_URL"
                                     }
                                 },
                                 "Payment Link with Product": {
@@ -1737,8 +1737,8 @@
                                         },
                                         "shopper": {
                                             "email": "name@boxpay.tech",
-                                            "phoneNumber": "+91123456789",
-                                            "uniqueReference": "uniqueRef"
+                                            "phoneNumber": "+911234567890",
+                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
                                         "productCode": "CODE12",
                                         "notifyViaEmail": true,
@@ -1817,56 +1817,6 @@
                                             "url": ""
                                         }
                                     }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/merchants/{merchantId}/payment-links/{token}/tracking-urls": {
-            "get": {
-                "tags": [
-                    "Payment Link APIs"
-                ],
-                "operationId": "getTrackingUrls",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "*/*": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "*/*": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                }
-                            }
-                        }
-                    },
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "*/*": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PaymentSessionResponse"
                                 }
                             }
                         }
@@ -6482,7 +6432,7 @@
                 "properties": {
                     "token": {
                         "type": "string",
-                        "description": "Inquiry token received in 'redirectionResult' query parameter in case of BoxPay checkout redirection. One of token or inquiryDetails is required. . Please note that redirectionResult token is only valid for 5 minutes."
+                        "description": "Inquiry token received in 'redirectionResult' query parameter in case of BoxPay checkout redirection. One of token or inquiryDetails is required. Please note that redirectionResult token is only valid for 5 minutes."
                     },
                     "inquiryDetails": {
                         "$ref": "#/components/schemas/OperationInquiryRequest"
