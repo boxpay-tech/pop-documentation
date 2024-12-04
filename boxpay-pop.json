@@ -1426,6 +1426,14 @@
                             "type": "string"
                         },
                         "example": "YOUR_MERCHANT_ID"
+                    },
+                    {
+                        "name": "pspCheckout",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -2927,6 +2935,11 @@
                             "ShopeePay",
                             "LinkAja",
                             "EaseBuzzTestWallet",
+                            "Oxigen",
+                            "AmexEzeClick",
+                            "PayU",
+                            "Masterpass",
+                            "ICashCard",
                             "TestBTC",
                             "BTC",
                             "LNBC",
@@ -2946,6 +2959,8 @@
                             "Affirm",
                             "Klarna",
                             "Tabby",
+                            "MobikwikBnpl",
+                            "TestBank",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
@@ -3093,6 +3108,7 @@
                             "CitiBank",
                             "PostOfficeSavingsBank",
                             "PaytmPaymentsBank",
+                            "INGVysyaBank",
                             "UpiCollect",
                             "UpiIntent",
                             "UpiQr",
@@ -3219,6 +3235,10 @@
                             "WALLET_PAYZAPP",
                             "WALLET_JIOMONEY",
                             "WALLET_BAJAJPAY",
+                            "WALLET_AMEX_EXE_CLICK",
+                            "WALLET_PAYU",
+                            "WALLET_MASTERPASS",
+                            "WALLET_ICASH_CARD",
                             "WALLET_LINKAJA",
                             "WALLET_SHOPEEPAY",
                             "WALLET_OVO",
@@ -3227,6 +3247,7 @@
                             "WALLET_NEXCASH",
                             "WALLET_MAYA",
                             "WALLET_EASEBUZZ_TEST",
+                            "WALLET_OXIGEN",
                             "TEST_BTC",
                             "BTC",
                             "LNBC",
@@ -3246,6 +3267,8 @@
                             "BNPL_HDFC",
                             "BNPL_LAZYPAY",
                             "BNPL_TABBY",
+                            "BNPL_MOBIKWIK",
+                            "NET_BANKING_TEST_BANK",
                             "NET_BANKING",
                             "NET_BANKING_KOTAK_MAHINDRA_BANK",
                             "NET_BANKING_STATE_BANK_OF_INDIA",
@@ -3393,6 +3416,7 @@
                             "NET_BANKING_FEDERAL_BANK_CORPORATE",
                             "NET_BANKING_CAPITAL_SMALL_FINANCE_BANK_CORPORATE",
                             "NET_BANKING_AU_SMALL_FINANCE_BANK_CORPORATE",
+                            "NET_BANKING_ING_VYSYA_BANK",
                             "UPI_COLLECT",
                             "UPI_INTENT",
                             "UPI_QR",
@@ -3423,6 +3447,9 @@
                     },
                     "card": {
                         "$ref": "#/components/schemas/CardDetails"
+                    },
+                    "cardTokenDetails": {
+                        "$ref": "#/components/schemas/TokenDetails"
                     },
                     "wallet": {
                         "$ref": "#/components/schemas/WalletDetails"
@@ -3657,6 +3684,9 @@
                     },
                     "billingAddress": {
                         "$ref": "#/components/schemas/Address"
+                    },
+                    "dccQuotationId": {
+                        "type": "string"
                     }
                 }
             },
@@ -4138,6 +4168,11 @@
                             "ShopeePay",
                             "LinkAja",
                             "EaseBuzzTestWallet",
+                            "Oxigen",
+                            "AmexEzeClick",
+                            "PayU",
+                            "Masterpass",
+                            "ICashCard",
                             "TestBTC",
                             "BTC",
                             "LNBC",
@@ -4157,6 +4192,8 @@
                             "Affirm",
                             "Klarna",
                             "Tabby",
+                            "MobikwikBnpl",
+                            "TestBank",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
@@ -4304,6 +4341,7 @@
                             "CitiBank",
                             "PostOfficeSavingsBank",
                             "PaytmPaymentsBank",
+                            "INGVysyaBank",
                             "UpiCollect",
                             "UpiIntent",
                             "UpiQr",
@@ -4495,6 +4533,14 @@
                     },
                     "deliveryAddress": {
                         "$ref": "#/components/schemas/AddressWithContactDetails"
+                    },
+                    "dateOfBirth": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "panNumber": {
+                        "pattern": "[A-Z]{5}[0-9]{4}[A-Z]{1}",
+                        "type": "string"
                     }
                 }
             },
@@ -4620,6 +4666,42 @@
                     }
                 }
             },
+            "DccQuotationDetails": {
+                "type": "object",
+                "properties": {
+                    "dccMoney": {
+                        "$ref": "#/components/schemas/Money"
+                    },
+                    "fxRate": {
+                        "type": "number"
+                    },
+                    "marginPercent": {
+                        "type": "number"
+                    },
+                    "commissionPercent": {
+                        "type": "number"
+                    },
+                    "source": {
+                        "type": "string"
+                    },
+                    "dspCode": {
+                        "type": "string",
+                        "enum": [
+                            "FEXCO",
+                            "MONEX"
+                        ]
+                    },
+                    "dspQuotationReference": {
+                        "type": "string"
+                    },
+                    "additionalData": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
             "EmiMethod": {
                 "type": "object",
                 "properties": {
@@ -4699,6 +4781,11 @@
                             "ShopeePay",
                             "LinkAja",
                             "EaseBuzzTestWallet",
+                            "Oxigen",
+                            "AmexEzeClick",
+                            "PayU",
+                            "Masterpass",
+                            "ICashCard",
                             "TestBTC",
                             "BTC",
                             "LNBC",
@@ -4718,6 +4805,8 @@
                             "Affirm",
                             "Klarna",
                             "Tabby",
+                            "MobikwikBnpl",
+                            "TestBank",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
@@ -4865,6 +4954,7 @@
                             "CitiBank",
                             "PostOfficeSavingsBank",
                             "PaytmPaymentsBank",
+                            "INGVysyaBank",
                             "UpiCollect",
                             "UpiIntent",
                             "UpiQr",
@@ -4968,6 +5058,11 @@
                             "ShopeePay",
                             "LinkAja",
                             "EaseBuzzTestWallet",
+                            "Oxigen",
+                            "AmexEzeClick",
+                            "PayU",
+                            "Masterpass",
+                            "ICashCard",
                             "TestBTC",
                             "BTC",
                             "LNBC",
@@ -4987,6 +5082,8 @@
                             "Affirm",
                             "Klarna",
                             "Tabby",
+                            "MobikwikBnpl",
+                            "TestBank",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
@@ -5134,6 +5231,7 @@
                             "CitiBank",
                             "PostOfficeSavingsBank",
                             "PaytmPaymentsBank",
+                            "INGVysyaBank",
                             "UpiCollect",
                             "UpiIntent",
                             "UpiQr",
@@ -5237,6 +5335,11 @@
                             "ShopeePay",
                             "LinkAja",
                             "EaseBuzzTestWallet",
+                            "Oxigen",
+                            "AmexEzeClick",
+                            "PayU",
+                            "Masterpass",
+                            "ICashCard",
                             "TestBTC",
                             "BTC",
                             "LNBC",
@@ -5256,6 +5359,8 @@
                             "Affirm",
                             "Klarna",
                             "Tabby",
+                            "MobikwikBnpl",
+                            "TestBank",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
@@ -5403,6 +5508,7 @@
                             "CitiBank",
                             "PostOfficeSavingsBank",
                             "PaytmPaymentsBank",
+                            "INGVysyaBank",
                             "UpiCollect",
                             "UpiIntent",
                             "UpiQr",
@@ -5645,6 +5751,11 @@
                             "ShopeePay",
                             "LinkAja",
                             "EaseBuzzTestWallet",
+                            "Oxigen",
+                            "AmexEzeClick",
+                            "PayU",
+                            "Masterpass",
+                            "ICashCard",
                             "TestBTC",
                             "BTC",
                             "LNBC",
@@ -5664,6 +5775,8 @@
                             "Affirm",
                             "Klarna",
                             "Tabby",
+                            "MobikwikBnpl",
+                            "TestBank",
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
@@ -5811,6 +5924,7 @@
                             "CitiBank",
                             "PostOfficeSavingsBank",
                             "PaytmPaymentsBank",
+                            "INGVysyaBank",
                             "UpiCollect",
                             "UpiIntent",
                             "UpiQr",
@@ -6172,6 +6286,13 @@
                     "status": {
                         "$ref": "#/components/schemas/PaymentOperationStatus"
                     },
+                    "riskLevel": {
+                        "type": "string"
+                    },
+                    "riskScore": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
                     "captureRequired": {
                         "type": "boolean"
                     },
@@ -6210,6 +6331,13 @@
                             "TAP",
                             "AIRPAY",
                             "PAYU",
+                            "WORLDLINE",
+                            "ZAAKPAY",
+                            "FISERV",
+                            "POSTBRIDGE",
+                            "CCAVENUE",
+                            "ALIPAYPLUS",
+                            "TELR",
                             "NONE"
                         ]
                     },
@@ -6231,6 +6359,9 @@
                     },
                     "money": {
                         "$ref": "#/components/schemas/Money"
+                    },
+                    "dccQuotationDetails": {
+                        "$ref": "#/components/schemas/DccQuotationDetails"
                     },
                     "originalAmount": {
                         "type": "number"
@@ -6482,18 +6613,18 @@
                             "Daily",
                             "Weekly",
                             "Monthly",
-                            "Yearly"
+                            "Yearly",
+                            "AsPresented"
                         ]
                     },
                     "count": {
                         "minimum": 1,
                         "type": "integer",
+                        "description": "Number of billingTimeUnit periods between two consecutive payments",
                         "format": "int32"
-                    },
-                    "billingCycleValue": {
-                        "type": "string"
                     }
-                }
+                },
+                "description": "Defines the billing cycle for the subscription, including the frequency and duration between consecutive payments. e.g. If billingTimeUnit is Weekly and count is 2, the billing cycle will occur every 2 weeks."
             },
             "BillingDuration": {
                 "required": [
@@ -6511,9 +6642,11 @@
                     "noOfCycles": {
                         "minimum": 1,
                         "type": "integer",
+                        "description": "Total number of billing cycles applicable if the type is FixedCycle.",
                         "format": "int32"
                     }
-                }
+                },
+                "description": "Defines the overall duration of the subscription."
             },
             "PaymentCheckoutRequest": {
                 "required": [
@@ -6591,6 +6724,10 @@
                     },
                     "subscription": {
                         "$ref": "#/components/schemas/SubscriptionDetails"
+                    },
+                    "createShopperToken": {
+                        "type": "boolean",
+                        "description": "Flag for merchant based shopper token for using saved instruments and addresses"
                     }
                 },
                 "description": "Request model for creating a checkout session"
@@ -6618,13 +6755,15 @@
                     },
                     "recurringExpiryDate": {
                         "type": "string",
+                        "description": "The date and time when the subscription expires",
                         "format": "date-time"
                     },
                     "maxAmount": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "Maximum amount for a plan/product in case a customer upgrades the subscription"
                     }
                 },
-                "description": "Subscription details, contains details of subscription to be shown on checkout"
+                "description": "Details of subscription to be shown on checkout page."
             },
             "PaymentSessionResponse": {
                 "type": "object",
@@ -6644,6 +6783,12 @@
                             "description": "Map of URLs with UTM parameters for different tracking mediums"
                         },
                         "description": "Map of URLs with UTM parameters for different tracking mediums"
+                    },
+                    "payload": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
                     }
                 },
                 "description": "Payment link/checkout Response containing URL and token"
