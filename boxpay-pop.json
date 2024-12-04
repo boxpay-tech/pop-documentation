@@ -243,7 +243,6 @@
                                 },
                                 "Registering Recurring Transaction": {
                                     "description": "Example request body for initial recurring transaction",
-                                    "description": "Example request body for initial recurring transaction",
                                     "value": {
                                         "context": {
                                             "countryCode": "IN",
@@ -333,7 +332,6 @@
                                                         "source": "payorch/BOXPAY",
                                                         "token": "YOUR_TOKEN"
                                                     }
-                                                    }
                                                 }
                                             },
                                             "billingAddress": {
@@ -349,7 +347,6 @@
                                             "firstName": "Shobhit",
                                             "lastName": "Mehra",
                                             "email": "shobhit@boxpay.tech",
-                                            "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                             "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF"
                                         },
                                         "shopperAuthentication": {
@@ -436,7 +433,6 @@
                                         "value": {
                                             "operationId": "a5KUQSkP84",
                                             "transactionId": "a5KUQSkP84",
-                                            "transactionId": "a5KUQSkP84",
                                             "eventId": "",
                                             "status": {
                                                 "operation": "Authorisation",
@@ -493,90 +489,6 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "+911234567890",
-                                                "email": "",
-                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
-                                                "deliveryAddress": {
-                                                    "address1": "",
-                                                    "address2": "",
-                                                    "address3": "",
-                                                    "city": "",
-                                                    "state": "",
-                                                    "countryCode": "AD",
-                                                    "postalCode": "",
-                                                    "countryName": ""
-                                                }
-                                            },
-                                            "paymentMethod": {
-                                                "type": "Card",
-                                                "brand": "VISA",
-                                                "classification": "Credit",
-                                                "subBrand": ""
-                                            }
-                                        }
-                                    },
-                                    "Registering Recurring Payment Response": {
-                                        "description": "Example response body for registering recurring transaction",
-                                        "value": {
-                                            "operationId": "a5KUQSkP84",
-                                            "transactionId": "a5KUQSkP84",
-                                            "eventId": "",
-                                            "status": {
-                                                "operation": "Authorisation",
-                                                "status": "Received",
-                                                "reason": "",
-                                                "reasonCode": ""
-                                            },
-                                            "captureRequired": false,
-                                            "legalEntityCode": "",
-                                            "clientPosId": "",
-                                            "orderId": "",
-                                            "caller": {
-                                                "token": "",
-                                                "callerType": "CHECKOUT"
-                                            },
-                                            "pspCode": "WORLDPAY",
-                                            "pspReference": "",
-                                            "pspOperationItems": [
-                                                {
-                                                    "pspReference": "",
-                                                    "money": {
-                                                        "amount": null,
-                                                        "currencyCode": "AFN"
-                                                    },
-                                                    "status": "Received",
-                                                    "reason": ""
-                                                }
-                                            ],
-                                            "timestamp": "",
-                                            "authCode": "",
-                                            "money": {
-                                                "amount": null,
-                                                "currencyCode": "AFN"
-                                            },
-                                            "actions": [
-                                                ""
-                                            ],
-                                            "additionalData": {},
-                                            "pspErrorDetails": {
-                                                "pspError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "networkError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "issuerError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                }
-                                            },
-                                            "shopper": {
-                                                "firstName": "",
-                                                "lastName": "",
-                                                "gender": "MALE",
-                                                "phoneNumber": "+911234567890",
                                                 "phoneNumber": "+911234567890",
                                                 "email": "",
                                                 "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
@@ -695,180 +607,6 @@
                                                 }
                                             }
                                         }
-                                    },
-                                    "Recurring Payment Response": {
-                                        "description": "Example response body for recurring transaction with no pre-debit notification",
-                                        "value": {
-                                            "operationId": "a5KUQSkP84",
-                                            "transactionId": "a5KUQSkP84",
-                                            "eventId": "",
-                                            "status": {
-                                                "operation": "Authorisation",
-                                                "status": "Received",
-                                                "reason": "",
-                                                "reasonCode": ""
-                                            },
-                                            "captureRequired": false,
-                                            "legalEntityCode": "",
-                                            "clientPosId": "",
-                                            "orderId": "",
-                                            "caller": {
-                                                "token": "",
-                                                "callerType": "CHECKOUT"
-                                            },
-                                            "pspCode": "WORLDPAY",
-                                            "pspReference": "",
-                                            "pspOperationItems": [
-                                                {
-                                                    "pspReference": "",
-                                                    "money": {
-                                                        "amount": null,
-                                                        "currencyCode": "AFN"
-                                                    },
-                                                    "status": "Received",
-                                                    "reason": ""
-                                                }
-                                            ],
-                                            "timestamp": "",
-                                            "authCode": "",
-                                            "money": {
-                                                "amount": null,
-                                                "currencyCode": "AFN"
-                                            },
-                                            "actions": [
-                                                ""
-                                            ],
-                                            "additionalData": {},
-                                            "pspErrorDetails": {
-                                                "pspError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "networkError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "issuerError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                }
-                                            },
-                                            "shopper": {
-                                                "firstName": "",
-                                                "lastName": "",
-                                                "gender": "MALE",
-                                                "phoneNumber": "+911234567890",
-                                                "email": "",
-                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
-                                                "deliveryAddress": {
-                                                    "address1": "",
-                                                    "address2": "",
-                                                    "address3": "",
-                                                    "city": "",
-                                                    "state": "",
-                                                    "countryCode": "AD",
-                                                    "postalCode": "",
-                                                    "countryName": ""
-                                                }
-                                            },
-                                            "paymentMethod": {
-                                                "type": "Card",
-                                                "brand": "VISA",
-                                                "classification": "Credit",
-                                                "subBrand": ""
-                                            },
-                                            "recurring": {
-                                                "reference": {
-                                                    "tokenDetails": {
-                                                        "source": "payorch/BOXPAY",
-                                                        "token": "YOUR_TOKEN"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "Recurring Payment With Pre-Debit Notification": {
-                                        "description": "Example response body for recurring transaction with pre-debit notification",
-                                        "value": {
-                                            "operationId": "n#a5KUQSkP84",
-                                            "transactionId": "a5KUQSkP84",
-                                            "eventId": "",
-                                            "status": {
-                                                "operation": "PreDebitNotification",
-                                                "status": "Received",
-                                                "reason": "",
-                                                "reasonCode": ""
-                                            },
-                                            "captureRequired": false,
-                                            "legalEntityCode": "",
-                                            "clientPosId": "",
-                                            "orderId": "",
-                                            "caller": {
-                                                "token": "",
-                                                "callerType": "CHECKOUT"
-                                            },
-                                            "pspCode": "WORLDPAY",
-                                            "pspReference": "",
-                                            "timestamp": "",
-                                            "authCode": "",
-                                            "money": {
-                                                "amount": null,
-                                                "currencyCode": "AFN"
-                                            },
-                                            "pspErrorDetails": {
-                                                "pspError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "networkError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "issuerError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                }
-                                            },
-                                            "shopper": {
-                                                "firstName": "",
-                                                "lastName": "",
-                                                "gender": "MALE",
-                                                "phoneNumber": "+911234567890",
-                                                "email": "",
-                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
-                                                "deliveryAddress": {
-                                                    "address1": "",
-                                                    "address2": "",
-                                                    "address3": "",
-                                                    "city": "",
-                                                    "state": "",
-                                                    "countryCode": "AD",
-                                                    "postalCode": "",
-                                                    "countryName": ""
-                                                }
-                                            },
-                                            "paymentMethod": {
-                                                "type": "Card",
-                                                "brand": "VISA",
-                                                "classification": "Credit",
-                                                "subBrand": ""
-                                            },
-                                            "recurring": {
-                                                "reference": {
-                                                    "tokenDetails": {
-                                                        "source": "payorch/BOXPAY",
-                                                        "token": "YOUR_TOKEN"
-                                                    }
-                                                },
-                                                "preDebitNotification": {
-                                                    "validFrom": "2024-07-02T07:31:55.720343619Z",
-                                                    "validTo": "2024-07-02T07:31:55.720343619Z",
-                                                    "autoDebit": false
-                                                }
-                                            },
-                                            "recurringTriggerRequired": false
-                                        }
-                                    }
                                     },
                                     "Recurring Payment Response": {
                                         "description": "Example response body for recurring transaction with no pre-debit notification",
@@ -1318,192 +1056,6 @@
                 }
             }
         },
-        "/merchants/{merchantId}/transactions/{transactionId}/recurring": {
-            "post": {
-                "tags": [
-                    "Payment APIs"
-                ],
-                "summary": "Trigger a recurring payment when pre-debit notification is complete",
-                "description": "This endpoint triggers a payment transaction for a recurring transaction where pre-debit notification is complete.",
-                "operationId": "recurringTrigger",
-                "parameters": [
-                    {
-                        "name": "merchantId",
-                        "in": "path",
-                        "description": "BoxPay unique ID assigned to Merchants",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "YOUR_MERCHANT_ID"
-                    },
-                    {
-                        "name": "transactionId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "500": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Internal Server Error": {
-                                        "description": "Example response body for internal server error",
-                                        "value": {
-                                            "errorCode": "unexpected_error",
-                                            "message": "Unexpected error occurred on server",
-                                            "timestamp": "2024-04-26T10:32:22.778165369Z",
-                                            "fieldErrorItems": [],
-                                            "retryable": true,
-                                            "reasonCode": "CF_0035"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ErrorDetails"
-                                },
-                                "examples": {
-                                    "Bad Request Error": {
-                                        "description": "Example response body for bad request",
-                                        "value": {
-                                            "errorCode": "required_body",
-                                            "message": "",
-                                            "timestamp": "",
-                                            "fieldErrorItems": [
-                                                {
-                                                    "message": "",
-                                                    "fieldErrorCode": "required_value"
-                                                }
-                                            ],
-                                            "retryable": false,
-                                            "reasonCode": ""
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "201": {
-                        "description": "Created",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PaymentResponse"
-                                },
-                                "examples": {
-                                    "Payment Response": {
-                                        "description": "Example response body for payment",
-                                        "value": {
-                                            "operationId": "a5KUQSkP84",
-                                            "transactionId": "a5KUQSkP84",
-                                            "eventId": "",
-                                            "status": {
-                                                "operation": "Authorisation",
-                                                "status": "Received",
-                                                "reason": "",
-                                                "reasonCode": ""
-                                            },
-                                            "captureRequired": false,
-                                            "legalEntityCode": "",
-                                            "clientPosId": "",
-                                            "orderId": "",
-                                            "caller": {
-                                                "token": "",
-                                                "callerType": "CHECKOUT"
-                                            },
-                                            "pspCode": "WORLDPAY",
-                                            "pspReference": "",
-                                            "pspOperationItems": [
-                                                {
-                                                    "pspReference": "",
-                                                    "money": {
-                                                        "amount": null,
-                                                        "currencyCode": "AFN"
-                                                    },
-                                                    "status": "Received",
-                                                    "reason": ""
-                                                }
-                                            ],
-                                            "timestamp": "",
-                                            "authCode": "",
-                                            "money": {
-                                                "amount": null,
-                                                "currencyCode": "AFN"
-                                            },
-                                            "actions": [
-                                                ""
-                                            ],
-                                            "additionalData": {},
-                                            "pspErrorDetails": {
-                                                "pspError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "networkError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                },
-                                                "issuerError": {
-                                                    "code": "",
-                                                    "description": ""
-                                                }
-                                            },
-                                            "shopper": {
-                                                "firstName": "",
-                                                "lastName": "",
-                                                "gender": "MALE",
-                                                "phoneNumber": "+911234567890",
-                                                "email": "",
-                                                "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
-                                                "deliveryAddress": {
-                                                    "address1": "",
-                                                    "address2": "",
-                                                    "address3": "",
-                                                    "city": "",
-                                                    "state": "",
-                                                    "countryCode": "AD",
-                                                    "postalCode": "",
-                                                    "countryName": ""
-                                                }
-                                            },
-                                            "paymentMethod": {
-                                                "type": "Card",
-                                                "brand": "VISA",
-                                                "classification": "Credit",
-                                                "subBrand": ""
-                                            },
-                                            "recurring": {
-                                                "reference": {
-                                                    "tokenDetails": {
-                                                        "source": "payorch/BOXPAY",
-                                                        "token": "YOUR_TOKEN"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/merchants/{merchantId}/transactions/{transactionId}/captures": {
             "post": {
                 "tags": [
@@ -1665,7 +1217,6 @@
                 ],
                 "summary": "Operation inquiry",
                 "description": "This endpoint fetches the details such as status, payment gateway, payment method and shopper details, for the requested operation. Please note that redirectionResult token is only valid for 5 minutes.",
-                "description": "This endpoint fetches the details such as status, payment gateway, payment method and shopper details, for the requested operation. Please note that redirectionResult token is only valid for 5 minutes.",
                 "operationId": "operationInquiry",
                 "parameters": [
                     {
@@ -1772,7 +1323,6 @@
                                         "value": {
                                             "operationId": "a5KUQSkP84",
                                             "transactionId": "a5KUQSkP84",
-                                            "transactionId": "a5KUQSkP84",
                                             "eventId": "",
                                             "status": {
                                                 "operation": "Authorisation",
@@ -1829,7 +1379,6 @@
                                                 "firstName": "",
                                                 "lastName": "",
                                                 "gender": "MALE",
-                                                "phoneNumber": "+911234567890",
                                                 "phoneNumber": "+911234567890",
                                                 "email": "",
                                                 "uniqueReference": "YOUR_UNIQUE_SHOPPER_REF",
@@ -3243,7 +2792,6 @@
                         "format": "int32"
                     },
                     "browserFingerprint": {
-                    "browserFingerprint": {
                         "type": "string"
                     },
                     "packageId": {
@@ -3345,7 +2893,6 @@
                             "Bajaj",
                             "KNET",
                             "Benefit",
-                            "Benefit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -3417,13 +2964,10 @@
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
-                            "KotakMahindraBankCorporate",
                             "StateBankOfIndia",
-                            "StateBankOfIndiaCorporate",
                             "StateBankOfIndiaCorporate",
                             "CityUnionBank",
                             "HDFCBank",
-                            "HDFCBankCorporate",
                             "HDFCBankCorporate",
                             "AxisBank",
                             "ICICICorporate",
@@ -3443,7 +2987,6 @@
                             "DhanlakshmiBank",
                             "FederalBank",
                             "FederalBankCorporate",
-                            "FederalBankCorporate",
                             "IDBIBank",
                             "IndusindBank",
                             "IndianBank",
@@ -3451,7 +2994,6 @@
                             "JammuAndKashmirBank",
                             "KarnatakaBankLtd",
                             "KarurVysyaBank",
-                            "KarurVysyaBankCorporate",
                             "KarurVysyaBankCorporate",
                             "LakshmiVilasBankCorporateBanking",
                             "LakshmiVilasBankRetailBanking",
@@ -3476,7 +3018,6 @@
                             "BandhanBankCorporate",
                             "DigibankDBS",
                             "DevelopmentBankOfSingapore",
-                            "DevelopmentBankOfSingapore",
                             "IDFCFIRSTBank",
                             "BassienCatholicCoopBank",
                             "RBLBankLimited",
@@ -3496,7 +3037,6 @@
                             "ZoroastrianCooperativeBankLtd",
                             "AUSmallFinanceBank",
                             "AUSmallFinanceBankCorporate",
-                            "AUSmallFinanceBankCorporate",
                             "KarnatakaGraminBank",
                             "FincareBank",
                             "AndhraPragathiGrameenaBank",
@@ -3512,7 +3052,6 @@
                             "TheSutexCoopBankLtd",
                             "MaharashtraGraminBank",
                             "CapitalSmallFinanceBank",
-                            "CapitalSmallFinanceBankCorporate",
                             "CapitalSmallFinanceBankCorporate",
                             "SBMBankIndia",
                             "UnionBankofIndiaCorporateNetBanking",
@@ -3640,13 +3179,6 @@
                             "HOME_CREDIT",
                             "ICICI_BANK",
                             "LIQUILOANS"
-                            "WALNUT_369",
-                            "AXIO",
-                            "BAJAJ_FINSERV_LIMITED",
-                            "HDFC_BANK",
-                            "HOME_CREDIT",
-                            "ICICI_BANK",
-                            "LIQUILOANS"
                         ]
                     },
                     "provider": {
@@ -3667,8 +3199,6 @@
                             "CARD_META",
                             "CARD_PLAIN",
                             "CARD_TOKEN",
-                            "LOCAL_CARD_KNET",
-                            "LOCAL_CARD_BENEFIT",
                             "LOCAL_CARD_KNET",
                             "LOCAL_CARD_BENEFIT",
                             "WALLET_ALIPAY",
@@ -3937,7 +3467,6 @@
                         "$ref": "#/components/schemas/UpiAppDetails"
                     },
                     "recurringReference": {
-                        "$ref": "#/components/schemas/RecurringReferenceInstruction"
                         "$ref": "#/components/schemas/RecurringReferenceInstruction"
                     },
                     "emi": {
@@ -4561,8 +4090,6 @@
                             "VirtualAccount",
                             "Emi",
                             "LocalCard"
-                            "Emi",
-                            "LocalCard"
                         ]
                     },
                     "brand": {
@@ -4598,7 +4125,6 @@
                             "Eftpos",
                             "Bajaj",
                             "KNET",
-                            "Benefit",
                             "Benefit",
                             "Alipay",
                             "AlipayHK",
@@ -4671,13 +4197,10 @@
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
-                            "KotakMahindraBankCorporate",
                             "StateBankOfIndia",
-                            "StateBankOfIndiaCorporate",
                             "StateBankOfIndiaCorporate",
                             "CityUnionBank",
                             "HDFCBank",
-                            "HDFCBankCorporate",
                             "HDFCBankCorporate",
                             "AxisBank",
                             "ICICICorporate",
@@ -4697,7 +4220,6 @@
                             "DhanlakshmiBank",
                             "FederalBank",
                             "FederalBankCorporate",
-                            "FederalBankCorporate",
                             "IDBIBank",
                             "IndusindBank",
                             "IndianBank",
@@ -4705,7 +4227,6 @@
                             "JammuAndKashmirBank",
                             "KarnatakaBankLtd",
                             "KarurVysyaBank",
-                            "KarurVysyaBankCorporate",
                             "KarurVysyaBankCorporate",
                             "LakshmiVilasBankCorporateBanking",
                             "LakshmiVilasBankRetailBanking",
@@ -4730,7 +4251,6 @@
                             "BandhanBankCorporate",
                             "DigibankDBS",
                             "DevelopmentBankOfSingapore",
-                            "DevelopmentBankOfSingapore",
                             "IDFCFIRSTBank",
                             "BassienCatholicCoopBank",
                             "RBLBankLimited",
@@ -4750,7 +4270,6 @@
                             "ZoroastrianCooperativeBankLtd",
                             "AUSmallFinanceBank",
                             "AUSmallFinanceBankCorporate",
-                            "AUSmallFinanceBankCorporate",
                             "KarnatakaGraminBank",
                             "FincareBank",
                             "AndhraPragathiGrameenaBank",
@@ -4766,7 +4285,6 @@
                             "TheSutexCoopBankLtd",
                             "MaharashtraGraminBank",
                             "CapitalSmallFinanceBank",
-                            "CapitalSmallFinanceBankCorporate",
                             "CapitalSmallFinanceBankCorporate",
                             "SBMBankIndia",
                             "UnionBankofIndiaCorporateNetBanking",
@@ -4963,14 +4481,11 @@
                 "description": "Instruction of the initial/registering recurring transaction"
             },
             "RecurringReferenceInstruction": {
-            "RecurringReferenceInstruction": {
                 "type": "object",
                 "properties": {
                     "tokenDetails": {
                         "$ref": "#/components/schemas/TokenDetails"
                     },
-                    "autoDebit": {
-                        "type": "boolean"
                     "autoDebit": {
                         "type": "boolean"
                     }
@@ -5136,36 +4651,6 @@
                     }
                 }
             },
-            "BasicMerchantOffer": {
-                "type": "object",
-                "properties": {
-                    "title": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "terms": {
-                        "type": "string"
-                    },
-                    "type": {
-                        "type": "string",
-                        "enum": [
-                            "Simple",
-                            "Emi"
-                        ]
-                    },
-                    "code": {
-                        "type": "string"
-                    },
-                    "discount": {
-                        "$ref": "#/components/schemas/OfferDiscount"
-                    },
-                    "appliedDiscountAmount": {
-                        "type": "number"
-                    }
-                }
-            },
             "Caller": {
                 "type": "object",
                 "properties": {
@@ -5254,7 +4739,6 @@
                             "Bajaj",
                             "KNET",
                             "Benefit",
-                            "Benefit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -5326,13 +4810,10 @@
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
-                            "KotakMahindraBankCorporate",
                             "StateBankOfIndia",
-                            "StateBankOfIndiaCorporate",
                             "StateBankOfIndiaCorporate",
                             "CityUnionBank",
                             "HDFCBank",
-                            "HDFCBankCorporate",
                             "HDFCBankCorporate",
                             "AxisBank",
                             "ICICICorporate",
@@ -5352,7 +4833,6 @@
                             "DhanlakshmiBank",
                             "FederalBank",
                             "FederalBankCorporate",
-                            "FederalBankCorporate",
                             "IDBIBank",
                             "IndusindBank",
                             "IndianBank",
@@ -5360,7 +4840,6 @@
                             "JammuAndKashmirBank",
                             "KarnatakaBankLtd",
                             "KarurVysyaBank",
-                            "KarurVysyaBankCorporate",
                             "KarurVysyaBankCorporate",
                             "LakshmiVilasBankCorporateBanking",
                             "LakshmiVilasBankRetailBanking",
@@ -5385,7 +4864,6 @@
                             "BandhanBankCorporate",
                             "DigibankDBS",
                             "DevelopmentBankOfSingapore",
-                            "DevelopmentBankOfSingapore",
                             "IDFCFIRSTBank",
                             "BassienCatholicCoopBank",
                             "RBLBankLimited",
@@ -5405,7 +4883,6 @@
                             "ZoroastrianCooperativeBankLtd",
                             "AUSmallFinanceBank",
                             "AUSmallFinanceBankCorporate",
-                            "AUSmallFinanceBankCorporate",
                             "KarnatakaGraminBank",
                             "FincareBank",
                             "AndhraPragathiGrameenaBank",
@@ -5421,7 +4898,6 @@
                             "TheSutexCoopBankLtd",
                             "MaharashtraGraminBank",
                             "CapitalSmallFinanceBank",
-                            "CapitalSmallFinanceBankCorporate",
                             "CapitalSmallFinanceBankCorporate",
                             "SBMBankIndia",
                             "UnionBankofIndiaCorporateNetBanking",
@@ -5540,7 +5016,6 @@
                             "Bajaj",
                             "KNET",
                             "Benefit",
-                            "Benefit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -5612,13 +5087,10 @@
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
-                            "KotakMahindraBankCorporate",
                             "StateBankOfIndia",
-                            "StateBankOfIndiaCorporate",
                             "StateBankOfIndiaCorporate",
                             "CityUnionBank",
                             "HDFCBank",
-                            "HDFCBankCorporate",
                             "HDFCBankCorporate",
                             "AxisBank",
                             "ICICICorporate",
@@ -5638,7 +5110,6 @@
                             "DhanlakshmiBank",
                             "FederalBank",
                             "FederalBankCorporate",
-                            "FederalBankCorporate",
                             "IDBIBank",
                             "IndusindBank",
                             "IndianBank",
@@ -5646,7 +5117,6 @@
                             "JammuAndKashmirBank",
                             "KarnatakaBankLtd",
                             "KarurVysyaBank",
-                            "KarurVysyaBankCorporate",
                             "KarurVysyaBankCorporate",
                             "LakshmiVilasBankCorporateBanking",
                             "LakshmiVilasBankRetailBanking",
@@ -5671,7 +5141,6 @@
                             "BandhanBankCorporate",
                             "DigibankDBS",
                             "DevelopmentBankOfSingapore",
-                            "DevelopmentBankOfSingapore",
                             "IDFCFIRSTBank",
                             "BassienCatholicCoopBank",
                             "RBLBankLimited",
@@ -5691,7 +5160,6 @@
                             "ZoroastrianCooperativeBankLtd",
                             "AUSmallFinanceBank",
                             "AUSmallFinanceBankCorporate",
-                            "AUSmallFinanceBankCorporate",
                             "KarnatakaGraminBank",
                             "FincareBank",
                             "AndhraPragathiGrameenaBank",
@@ -5707,7 +5175,6 @@
                             "TheSutexCoopBankLtd",
                             "MaharashtraGraminBank",
                             "CapitalSmallFinanceBank",
-                            "CapitalSmallFinanceBankCorporate",
                             "CapitalSmallFinanceBankCorporate",
                             "SBMBankIndia",
                             "UnionBankofIndiaCorporateNetBanking",
@@ -5826,7 +5293,6 @@
                             "Bajaj",
                             "KNET",
                             "Benefit",
-                            "Benefit",
                             "Alipay",
                             "AlipayHK",
                             "AmazonPay",
@@ -5898,13 +5364,10 @@
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
-                            "KotakMahindraBankCorporate",
                             "StateBankOfIndia",
-                            "StateBankOfIndiaCorporate",
                             "StateBankOfIndiaCorporate",
                             "CityUnionBank",
                             "HDFCBank",
-                            "HDFCBankCorporate",
                             "HDFCBankCorporate",
                             "AxisBank",
                             "ICICICorporate",
@@ -5924,7 +5387,6 @@
                             "DhanlakshmiBank",
                             "FederalBank",
                             "FederalBankCorporate",
-                            "FederalBankCorporate",
                             "IDBIBank",
                             "IndusindBank",
                             "IndianBank",
@@ -5932,7 +5394,6 @@
                             "JammuAndKashmirBank",
                             "KarnatakaBankLtd",
                             "KarurVysyaBank",
-                            "KarurVysyaBankCorporate",
                             "KarurVysyaBankCorporate",
                             "LakshmiVilasBankCorporateBanking",
                             "LakshmiVilasBankRetailBanking",
@@ -5957,7 +5418,6 @@
                             "BandhanBankCorporate",
                             "DigibankDBS",
                             "DevelopmentBankOfSingapore",
-                            "DevelopmentBankOfSingapore",
                             "IDFCFIRSTBank",
                             "BassienCatholicCoopBank",
                             "RBLBankLimited",
@@ -5977,7 +5437,6 @@
                             "ZoroastrianCooperativeBankLtd",
                             "AUSmallFinanceBank",
                             "AUSmallFinanceBankCorporate",
-                            "AUSmallFinanceBankCorporate",
                             "KarnatakaGraminBank",
                             "FincareBank",
                             "AndhraPragathiGrameenaBank",
@@ -5993,7 +5452,6 @@
                             "TheSutexCoopBankLtd",
                             "MaharashtraGraminBank",
                             "CapitalSmallFinanceBank",
-                            "CapitalSmallFinanceBankCorporate",
                             "CapitalSmallFinanceBankCorporate",
                             "SBMBankIndia",
                             "UnionBankofIndiaCorporateNetBanking",
@@ -6121,13 +5579,6 @@
                             "HOME_CREDIT",
                             "ICICI_BANK",
                             "LIQUILOANS"
-                            "WALNUT_369",
-                            "AXIO",
-                            "BAJAJ_FINSERV_LIMITED",
-                            "HDFC_BANK",
-                            "HOME_CREDIT",
-                            "ICICI_BANK",
-                            "LIQUILOANS"
                         ]
                     }
                 }
@@ -6201,34 +5652,6 @@
                     }
                 }
             },
-            "OfferDiscount": {
-                "required": [
-                    "type"
-                ],
-                "type": "object",
-                "properties": {
-                    "percentage": {
-                        "maximum": 100,
-                        "minimum": 0,
-                        "type": "number"
-                    },
-                    "amount": {
-                        "type": "number"
-                    },
-                    "type": {
-                        "type": "string",
-                        "enum": [
-                            "NoCostEmi",
-                            "LowCostEmi",
-                            "Instant",
-                            "Discounted"
-                        ]
-                    },
-                    "maxAmount": {
-                        "type": "number"
-                    }
-                }
-            },
             "PaymentMethodDetails": {
                 "required": [
                     "brand",
@@ -6248,8 +5671,6 @@
                             "Crypto",
                             "DirectDebit",
                             "VirtualAccount",
-                            "Emi",
-                            "LocalCard"
                             "Emi",
                             "LocalCard"
                         ]
@@ -6287,7 +5708,6 @@
                             "Eftpos",
                             "Bajaj",
                             "KNET",
-                            "Benefit",
                             "Benefit",
                             "Alipay",
                             "AlipayHK",
@@ -6360,13 +5780,10 @@
                             "BillDeskTestBank",
                             "KotakMahindraBank",
                             "KotakMahindraBankCorporate",
-                            "KotakMahindraBankCorporate",
                             "StateBankOfIndia",
-                            "StateBankOfIndiaCorporate",
                             "StateBankOfIndiaCorporate",
                             "CityUnionBank",
                             "HDFCBank",
-                            "HDFCBankCorporate",
                             "HDFCBankCorporate",
                             "AxisBank",
                             "ICICICorporate",
@@ -6386,7 +5803,6 @@
                             "DhanlakshmiBank",
                             "FederalBank",
                             "FederalBankCorporate",
-                            "FederalBankCorporate",
                             "IDBIBank",
                             "IndusindBank",
                             "IndianBank",
@@ -6394,7 +5810,6 @@
                             "JammuAndKashmirBank",
                             "KarnatakaBankLtd",
                             "KarurVysyaBank",
-                            "KarurVysyaBankCorporate",
                             "KarurVysyaBankCorporate",
                             "LakshmiVilasBankCorporateBanking",
                             "LakshmiVilasBankRetailBanking",
@@ -6419,7 +5834,6 @@
                             "BandhanBankCorporate",
                             "DigibankDBS",
                             "DevelopmentBankOfSingapore",
-                            "DevelopmentBankOfSingapore",
                             "IDFCFIRSTBank",
                             "BassienCatholicCoopBank",
                             "RBLBankLimited",
@@ -6439,7 +5853,6 @@
                             "ZoroastrianCooperativeBankLtd",
                             "AUSmallFinanceBank",
                             "AUSmallFinanceBankCorporate",
-                            "AUSmallFinanceBankCorporate",
                             "KarnatakaGraminBank",
                             "FincareBank",
                             "AndhraPragathiGrameenaBank",
@@ -6455,7 +5868,6 @@
                             "TheSutexCoopBankLtd",
                             "MaharashtraGraminBank",
                             "CapitalSmallFinanceBank",
-                            "CapitalSmallFinanceBankCorporate",
                             "CapitalSmallFinanceBankCorporate",
                             "SBMBankIndia",
                             "UnionBankofIndiaCorporateNetBanking",
@@ -6567,8 +5979,6 @@
                             "Cancel",
                             "Refund",
                             "Partial_Refund",
-                            "Settlement",
-                            "PreDebitNotification"
                             "Settlement",
                             "PreDebitNotification"
                         ]
@@ -6960,7 +6370,6 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/BasicMerchantOffer"
-                            "$ref": "#/components/schemas/BasicMerchantOffer"
                         }
                     },
                     "actions": {
@@ -6989,9 +6398,6 @@
                     },
                     "recurring": {
                         "$ref": "#/components/schemas/Recurring"
-                    },
-                    "recurringTriggerRequired": {
-                        "type": "boolean"
                     },
                     "recurringTriggerRequired": {
                         "type": "boolean"
@@ -7097,33 +6503,6 @@
                 "properties": {
                     "tokenDetails": {
                         "$ref": "#/components/schemas/TokenDetails"
-                    },
-                    "preDebitNotification": {
-                        "$ref": "#/components/schemas/RecurringPreDebitNotification"
-                    }
-                }
-            },
-            "RecurringPreDebitNotification": {
-                "type": "object",
-                "properties": {
-                    "validFrom": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "validTo": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "autoDebit": {
-                        "type": "boolean"
-                    }
-                }
-            },
-            "RecurringReference": {
-                "type": "object",
-                "properties": {
-                    "tokenDetails": {
-                        "$ref": "#/components/schemas/TokenDetails"
                     }
                 }
             },
@@ -7176,9 +6555,6 @@
                     },
                     "userId": {
                         "type": "string"
-                    },
-                    "userId": {
-                        "type": "string"
                     }
                 }
             },
@@ -7187,7 +6563,6 @@
                 "properties": {
                     "token": {
                         "type": "string",
-                        "description": "Inquiry token received in 'redirectionResult' query parameter in case of BoxPay checkout redirection. One of token or inquiryDetails is required. Please note that redirectionResult token is only valid for 5 minutes."
                         "description": "Inquiry token received in 'redirectionResult' query parameter in case of BoxPay checkout redirection. One of token or inquiryDetails is required. Please note that redirectionResult token is only valid for 5 minutes."
                     },
                     "inquiryDetails": {
@@ -7219,8 +6594,6 @@
                             "Cancel",
                             "Refund",
                             "Partial_Refund",
-                            "Settlement",
-                            "PreDebitNotification"
                             "Settlement",
                             "PreDebitNotification"
                         ]
