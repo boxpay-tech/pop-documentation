@@ -6,7 +6,7 @@
     },
     "servers": [
         {
-            "url": "https://sandbox-apis.boxpay.tech/v0",
+            "url": "https://test-apis.boxpay.tech/v0",
             "description": "Sandbox / Integration / Test"
         },
         {
