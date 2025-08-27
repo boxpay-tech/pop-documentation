@@ -8829,10 +8829,12 @@
             "type": "string"
           },
           "shopperUniqueReference": {
-            "type": "string"
+            "type": "string",
+            "description": "Unique reference of shopper to which the instrument belongs"
           },
           "transactionReference": {
-            "type": "string"
+            "type": "string",
+            "description": "Transaction reference of tokenized instrument"
           },
           "userAuthenticationCompleted": {
             "type": "boolean",
