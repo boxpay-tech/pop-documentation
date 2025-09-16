@@ -376,6 +376,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -398,29 +421,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -850,8 +850,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -860,8 +860,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -936,8 +936,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -946,8 +946,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -1022,8 +1022,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -1032,8 +1032,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -1084,6 +1084,29 @@
           }
         ],
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1106,29 +1129,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -1292,8 +1292,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -1302,8 +1302,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -1364,8 +1364,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -1374,8 +1374,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -1390,6 +1390,172 @@
               "*/*": {
                 "schema": {
                   "$ref": "#/components/schemas/PaymentResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/merchants/{merchantId}/transactions/search": {
+      "post": {
+        "tags": [
+          "Payment APIs"
+        ],
+        "summary": "Fetch Transactions In A Date Range",
+        "description": "Retrieves transaction details such as status, payment gateway, payment method, and shopper information within a specified date range.",
+        "operationId": "fetchTransactionsInDateRange",
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransactionSearchRequest"
+              },
+              "examples": {
+                "Transaction search request for a specific date range": {
+                  "description": "Example request body for fetching transaction in a date range",
+                  "value": "{\n    \"fromDate\" : \"2025-05-14T10:27:54.695199Z\",\n    \"toDate\" : \"2025-05-18T11:27:54.695199Z\",\n    \"limit\" : \"100\",\n    \"\"offset : \"0\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Bad Request Error": {
+                    "description": "Example response body for bad request",
+                    "value": {
+                      "errorCode": "invalid_body_fields",
+                      "message": "",
+                      "timestamp": "",
+                      "fieldErrorItems": [
+                        {
+                          "message": "",
+                          "fieldErrorCode": "invalid_value"
+                        }
+                      ],
+                      "retryable": false,
+                      "reasonCode": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnhancedPaymentResponse"
+                },
+                "examples": {
+                  "Fetch Transaction Response": {
+                    "description": "Example response body for fetching transactions in a date range",
+                    "value": [
+                      {
+                        "merchantId": "9Azy8efkWY",
+                        "operationId": "u95wiTEPw4",
+                        "transactionId": "u95wiTEPw4",
+                        "countryCode": "IN",
+                        "status": {
+                          "operation": "Authorisation",
+                          "status": "Approved",
+                          "reason": "Simulated response message",
+                          "reasonCode": "OS_0000"
+                        },
+                        "legalEntityCode": "legal_entity",
+                        "orderId": "97ba55a0-f624-452f-8756-26d7dd473ebf",
+                        "pspCode": "CASHFREE",
+                        "pspReference": "9Azy8efkWY-u95wiTEPw4",
+                        "timestamp": "2025-05-14T14:00:36.629Z",
+                        "authCode": "5114917977467",
+                        "money": {
+                          "amount": 100,
+                          "currencyCode": "INR"
+                        },
+                        "shopper": {
+                          "firstName": "",
+                          "lastName": "",
+                          "gender": null,
+                          "phoneNumber": "+9123456789",
+                          "email": "example@mail.com",
+                          "uniqueReference": "1bd6e26a-1e77-4851-aead-9b7b7c13a2ea",
+                          "deliveryAddress": {
+                            "address1": "",
+                            "address2": "",
+                            "address3": null,
+                            "city": "Delhi",
+                            "state": "New Delhi",
+                            "countryCode": "IN",
+                            "postalCode": "122341",
+                            "shopperRef": null,
+                            "addressRef": null,
+                            "labelType": "Other",
+                            "labelName": null,
+                            "name": null,
+                            "email": "",
+                            "phoneNumber": null
+                          },
+                          "dateOfBirth": null,
+                          "panNumber": null
+                        },
+                        "paymentMethod": {
+                          "type": "NetBanking",
+                          "brand": "Bank"
+                        },
+                        "remainingCapturableAmount": {
+                          "amount": 0,
+                          "currencyCode": "INR"
+                        },
+                        "remainingRefundableAmount": {
+                          "amount": 100,
+                          "currencyCode": "INR"
+                        }
+                      }
+                    ]
+                  }
                 }
               }
             }
@@ -1446,6 +1612,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1468,29 +1657,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -1788,6 +1954,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1810,29 +1999,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -1948,6 +2114,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1970,29 +2159,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2071,6 +2237,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2093,29 +2282,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2200,6 +2366,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2222,29 +2411,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2306,8 +2472,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -2316,8 +2482,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -2389,6 +2555,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2411,29 +2600,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -4413,6 +4579,9 @@
           },
           "minAmount": {
             "$ref": "#/components/schemas/Money"
+          },
+          "multiCapture": {
+            "type": "string"
           }
         }
       },
@@ -8146,6 +8315,625 @@
         "properties": {
           "requestId": {
             "type": "string"
+          }
+        }
+      },
+      "AdvancedAttributeFilter": {
+        "required": [
+          "attrName",
+          "operator",
+          "values"
+        ],
+        "type": "object",
+        "properties": {
+          "attrName": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "gt",
+              "lt",
+              "gte",
+              "lte",
+              "between",
+              "eq",
+              "eqOrNotExists",
+              "neq",
+              "exists",
+              "contains",
+              "containsIgnoreCase"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "TransactionSearchRequest": {
+        "type": "object",
+        "properties": {
+          "fromDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "toDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "limit": {
+            "maximum": 500,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "advancedAttributeFilter": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdvancedAttributeFilter"
+            }
+          }
+        }
+      },
+      "EnhancedPaymentResponse": {
+        "type": "object",
+        "properties": {
+          "merchantId": {
+            "type": "string"
+          },
+          "operationId": {
+            "title": "BoxPay provided operation id",
+            "type": "string",
+            "example": "a5KUQSkP84"
+          },
+          "transactionId": {
+            "title": "BoxPay provided transaction id",
+            "type": "string",
+            "example": "a5KUQSkP84"
+          },
+          "countryCode": {
+            "type": "string",
+            "enum": [
+              "AD",
+              "AE",
+              "AF",
+              "AG",
+              "AI",
+              "AL",
+              "AM",
+              "AO",
+              "AQ",
+              "AR",
+              "AS",
+              "AT",
+              "AU",
+              "AW",
+              "AX",
+              "AZ",
+              "BA",
+              "BB",
+              "BD",
+              "BE",
+              "BF",
+              "BG",
+              "BH",
+              "BI",
+              "BJ",
+              "BL",
+              "BM",
+              "BN",
+              "BO",
+              "BQ",
+              "BR",
+              "BS",
+              "BT",
+              "BV",
+              "BW",
+              "BY",
+              "BZ",
+              "CA",
+              "CC",
+              "CD",
+              "CF",
+              "CG",
+              "CH",
+              "CI",
+              "CK",
+              "CL",
+              "CM",
+              "CN",
+              "CO",
+              "CR",
+              "CU",
+              "CV",
+              "CW",
+              "CX",
+              "CY",
+              "CZ",
+              "DE",
+              "DJ",
+              "DK",
+              "DM",
+              "DO",
+              "DZ",
+              "EC",
+              "EE",
+              "EG",
+              "EH",
+              "ER",
+              "ES",
+              "ET",
+              "FI",
+              "FJ",
+              "FK",
+              "FM",
+              "FO",
+              "FR",
+              "GA",
+              "GB",
+              "GD",
+              "GE",
+              "GF",
+              "GG",
+              "GH",
+              "GI",
+              "GL",
+              "GM",
+              "GN",
+              "GP",
+              "GQ",
+              "GR",
+              "GT",
+              "GU",
+              "GW",
+              "GY",
+              "HK",
+              "HM",
+              "HN",
+              "HR",
+              "HT",
+              "HU",
+              "ID",
+              "IE",
+              "IL",
+              "IM",
+              "IN",
+              "IO",
+              "IQ",
+              "IR",
+              "IS",
+              "IT",
+              "JE",
+              "JM",
+              "JO",
+              "JP",
+              "KE",
+              "KG",
+              "KH",
+              "KI",
+              "KM",
+              "KN",
+              "KP",
+              "KR",
+              "KW",
+              "KY",
+              "KZ",
+              "LA",
+              "LB",
+              "LC",
+              "LI",
+              "LK",
+              "LR",
+              "LS",
+              "LT",
+              "LU",
+              "LV",
+              "LY",
+              "MA",
+              "MC",
+              "MD",
+              "ME",
+              "MF",
+              "MG",
+              "MH",
+              "MK",
+              "ML",
+              "MM",
+              "MN",
+              "MO",
+              "MP",
+              "MQ",
+              "MR",
+              "MS",
+              "MT",
+              "MU",
+              "MV",
+              "MW",
+              "MX",
+              "MY",
+              "MZ",
+              "NA",
+              "NC",
+              "NE",
+              "NF",
+              "NG",
+              "NI",
+              "NL",
+              "NO",
+              "NP",
+              "NR",
+              "NU",
+              "NZ",
+              "OM",
+              "PA",
+              "PE",
+              "PF",
+              "PG",
+              "PH",
+              "PK",
+              "PL",
+              "PM",
+              "PN",
+              "PR",
+              "PS",
+              "PT",
+              "PW",
+              "PY",
+              "QA",
+              "RE",
+              "RO",
+              "RS",
+              "RU",
+              "RW",
+              "SA",
+              "SB",
+              "SC",
+              "SD",
+              "SE",
+              "SG",
+              "SH",
+              "SI",
+              "SJ",
+              "SK",
+              "SL",
+              "SM",
+              "SN",
+              "SO",
+              "SR",
+              "SS",
+              "ST",
+              "SV",
+              "SX",
+              "SY",
+              "SZ",
+              "TC",
+              "TD",
+              "TF",
+              "TG",
+              "TH",
+              "TJ",
+              "TK",
+              "TL",
+              "TM",
+              "TN",
+              "TO",
+              "TR",
+              "TT",
+              "TV",
+              "TW",
+              "TZ",
+              "UA",
+              "UG",
+              "US",
+              "UY",
+              "UZ",
+              "VA",
+              "VC",
+              "VE",
+              "VG",
+              "VI",
+              "VN",
+              "VU",
+              "WF",
+              "WS",
+              "XK",
+              "YE",
+              "YT",
+              "ZA",
+              "ZM",
+              "ZW"
+            ]
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PaymentOperationStatus"
+          },
+          "riskLevel": {
+            "type": "string"
+          },
+          "riskScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "captureRequired": {
+            "type": "boolean"
+          },
+          "legalEntityCode": {
+            "type": "string"
+          },
+          "clientPosId": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "caller": {
+            "$ref": "#/components/schemas/Caller"
+          },
+          "pspCode": {
+            "type": "string",
+            "enum": [
+              "WORLDPAY",
+              "ADYEN",
+              "CYBERSOURCE",
+              "CCPP",
+              "MPGS",
+              "ATOME",
+              "REDDOT",
+              "GLOBALPAYMENTS",
+              "BILLDESK",
+              "STRIPE",
+              "TRIPLEA",
+              "JIOPAY",
+              "PAYPAL",
+              "XENDIT",
+              "RAZORPAY",
+              "PHONEPE",
+              "EASEBUZZ",
+              "TAP",
+              "AIRPAY",
+              "PAYU",
+              "WORLDLINE",
+              "ZAAKPAY",
+              "FISERV",
+              "POSTBRIDGE",
+              "CCAVENUE",
+              "ALIPAYPLUS",
+              "TELR",
+              "DOKU",
+              "CASHFREE",
+              "HYPERPG",
+              "PAYTEN",
+              "NONE"
+            ]
+          },
+          "pspReference": {
+            "type": "string"
+          },
+          "networkReference": {
+            "type": "string"
+          },
+          "pspOperationItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PspOperationItem"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "authCode": {
+            "type": "string"
+          },
+          "money": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "dccQuotationDetails": {
+            "$ref": "#/components/schemas/DccQuotationDetails"
+          },
+          "originalAmount": {
+            "type": "number"
+          },
+          "offers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BasicMerchantOffer"
+            }
+          },
+          "surcharges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppliedSurcharge"
+            }
+          },
+          "surchargedMoney": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MerchantAction"
+            }
+          },
+          "additionalData": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "pspErrorDetails": {
+            "$ref": "#/components/schemas/PspErrorDetails"
+          },
+          "shopper": {
+            "$ref": "#/components/schemas/ShopperDetails"
+          },
+          "paymentMethod": {
+            "$ref": "#/components/schemas/PaymentMethodDetails"
+          },
+          "emiMethod": {
+            "$ref": "#/components/schemas/EmiMethod"
+          },
+          "recurring": {
+            "$ref": "#/components/schemas/Recurring"
+          },
+          "oneTimeMandate": {
+            "$ref": "#/components/schemas/OneTimeMandateInstruction"
+          },
+          "recurringTriggerRequired": {
+            "type": "boolean"
+          },
+          "splitSettlementsInstructionsRequired": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "customCheckoutFields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "remainingCapturableAmount": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "remainingRefundableAmount": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "browserData": {
+            "$ref": "#/components/schemas/BrowserData"
+          },
+          "merchantReference": {
+            "type": "string"
+          },
+          "batchNumber": {
+            "type": "string"
+          },
+          "settlementFileId": {
+            "type": "string"
+          },
+          "fxRate": {
+            "type": "number"
+          },
+          "linkedOperationDetails": {
+            "$ref": "#/components/schemas/LinkedOperationDetails"
+          },
+          "settlementMoney": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "settlementFee": {
+            "$ref": "#/components/schemas/SettlementFee"
+          },
+          "settlementTax": {
+            "$ref": "#/components/schemas/SettlementTax"
+          },
+          "reconciliationConflicts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReconciliationConflict"
+            }
+          },
+          "settlementDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "LinkedOperationDetails": {
+        "type": "object",
+        "properties": {
+          "operationId": {
+            "type": "string"
+          },
+          "operationName": {
+            "type": "string",
+            "enum": [
+              "Authorisation",
+              "Capture",
+              "Partial_Capture",
+              "Cancel",
+              "Refund",
+              "Partial_Refund",
+              "Settlement",
+              "PreDebitNotification"
+            ]
+          },
+          "pspReference": {
+            "type": "string"
+          },
+          "subItemPspReferences": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ReconciliationConflict": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "Gross_Amount_Mismatch",
+              "Settled_Amount_Mismatch",
+              "Status_Mismatch",
+              "Order_Missing",
+              "Invalid_Format",
+              "Invalid_Value",
+              "Repeated_Settlement",
+              "Failed"
+            ]
+          },
+          "expected": {
+            "type": "string"
+          },
+          "received": {
+            "type": "string"
+          },
+          "statusReason": {
+            "type": "string"
+          }
+        }
+      },
+      "SettlementFee": {
+        "type": "object",
+        "properties": {
+          "commissionFee": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "markupAmount": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "schemeFee": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "interchangeFee": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "totalFee": {
+            "$ref": "#/components/schemas/Money"
+          }
+        }
+      },
+      "SettlementTax": {
+        "type": "object",
+        "properties": {
+          "totalTax": {
+            "$ref": "#/components/schemas/Money"
           }
         }
       },
