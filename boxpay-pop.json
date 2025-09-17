@@ -376,6 +376,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -398,29 +421,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -850,8 +850,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -860,8 +860,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -872,178 +872,6 @@
           },
           "201": {
             "description": "Created",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/merchants/{merchantId}/transactions/{transactionId}/refunds/{refundId}/declines": {
-      "post": {
-        "tags": [
-          "Payment APIs"
-        ],
-        "operationId": "declineRefund",
-        "parameters": [
-          {
-            "name": "merchantId",
-            "in": "path",
-            "description": "BoxPay unique ID assigned to Merchants",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "YOUR_MERCHANT_ID"
-          },
-          {
-            "name": "transactionId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "refundId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RefundDeclineRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PaymentResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/merchants/{merchantId}/transactions/{transactionId}/refunds/{refundId}/approvals": {
-      "post": {
-        "tags": [
-          "Payment APIs"
-        ],
-        "operationId": "approveRefund",
-        "parameters": [
-          {
-            "name": "merchantId",
-            "in": "path",
-            "description": "BoxPay unique ID assigned to Merchants",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "YOUR_MERCHANT_ID"
-          },
-          {
-            "name": "transactionId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "refundId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "X-Request-Id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RefundApprovalRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK",
             "content": {
               "*/*": {
                 "schema": {
@@ -1084,6 +912,29 @@
           }
         ],
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1106,29 +957,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -1292,8 +1120,8 @@
           "required": true
         },
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -1302,8 +1130,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -1364,8 +1192,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -1374,8 +1202,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -1432,6 +1260,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1454,29 +1305,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -1612,6 +1440,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1634,29 +1485,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -1954,6 +1782,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -1976,29 +1827,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2114,6 +1942,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2136,29 +1987,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2237,6 +2065,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2259,29 +2110,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2366,6 +2194,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2388,29 +2239,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -2472,8 +2300,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
+          "500": {
+            "description": "Internal Server Error",
             "content": {
               "*/*": {
                 "schema": {
@@ -2482,8 +2310,8 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
+          "400": {
+            "description": "Bad Request",
             "content": {
               "*/*": {
                 "schema": {
@@ -2555,6 +2383,29 @@
           "required": true
         },
         "responses": {
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "400": {
             "description": "",
             "content": {
@@ -2577,29 +2428,6 @@
                       ],
                       "retryable": false,
                       "reasonCode": ""
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorDetails"
-                },
-                "examples": {
-                  "Internal Server Error": {
-                    "description": "Example response body for internal server error",
-                    "value": {
-                      "errorCode": "unexpected_error",
-                      "message": "Unexpected error occurred on server",
-                      "timestamp": "2024-04-26T10:32:22.778165369Z",
-                      "fieldErrorItems": [],
-                      "retryable": true,
-                      "reasonCode": "CF_0035"
                     }
                   }
                 }
@@ -8339,27 +8167,6 @@
           },
           "merchantSettlement": {
             "$ref": "#/components/schemas/Money"
-          }
-        }
-      },
-      "RefundDeclineRequest": {
-        "required": [
-          "reason"
-        ],
-        "type": "object",
-        "properties": {
-          "reason": {
-            "maxLength": 500,
-            "minLength": 5,
-            "type": "string"
-          }
-        }
-      },
-      "RefundApprovalRequest": {
-        "type": "object",
-        "properties": {
-          "requestId": {
-            "type": "string"
           }
         }
       },
