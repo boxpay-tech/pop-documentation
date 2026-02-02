@@ -1797,8 +1797,7 @@
                     },
                     "oneTimeMandate": {
                       "startDate": "2025-09-25T23:44:33Z",
-                      "expiryDate": "2025-12-25T05:44:33Z",
-                      "enabled": true
+                      "expiryDate": "2025-12-25T05:44:33Z"
                     },
                     "frontendBackUrl": "YOUR_BACK_URL"
                   }
@@ -1825,8 +1824,7 @@
                     "oneTimeMandate": {
                       "startDate": "2025-09-25T23:44:33Z",
                       "expiryDate": "2025-12-25T05:44:33Z",
-                      "enabled": true,
-                      "multiCapture": "Y"
+                      "multiCapture": true
                     },
                     "frontendBackUrl": "YOUR_BACK_URL"
                   }
@@ -2510,6 +2508,168 @@
           }
         }
       }
+    },
+    "/merchants/{merchantId}/orders/{orderId}/transactions": {
+      "get": {
+        "tags": [
+          "Payment APIs"
+        ],
+        "summary": "Fetch Order Transactions",
+        "description": "Retrieves the transaction details such as status, payment gateway, payment method, and shopper information for an order.",
+        "operationId": "fetchLatestTransactionStatusByOrderId",
+        "parameters": [
+          {
+            "name": "merchantId",
+            "in": "path",
+            "description": "BoxPay unique ID assigned to Merchants",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "YOUR_MERCHANT_ID"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "Order Id provided at the time of payment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "YOUR_ORDER_ID"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Bad Request Error": {
+                    "description": "Example response body for bad request",
+                    "value": {
+                      "errorCode": "invalid_body_fields",
+                      "message": "",
+                      "timestamp": "",
+                      "fieldErrorItems": [
+                        {
+                          "message": "",
+                          "fieldErrorCode": "invalid_value"
+                        }
+                      ],
+                      "retryable": false,
+                      "reasonCode": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetails"
+                },
+                "examples": {
+                  "Internal Server Error": {
+                    "description": "Example response body for internal server error",
+                    "value": {
+                      "errorCode": "unexpected_error",
+                      "message": "Unexpected error occurred on server",
+                      "timestamp": "2024-04-26T10:32:22.778165369Z",
+                      "fieldErrorItems": [],
+                      "retryable": true,
+                      "reasonCode": "CF_0035"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EnhancedPaymentResponse"
+                },
+                "examples": {
+                  "Fetch Transaction Response": {
+                    "description": "Example response body for fetching transactions in a date range",
+                    "value": [
+                      {
+                        "merchantId": "9Azy8efkWY",
+                        "operationId": "u95wiTEPw4",
+                        "transactionId": "u95wiTEPw4",
+                        "countryCode": "IN",
+                        "status": {
+                          "operation": "Authorisation",
+                          "status": "Approved",
+                          "reason": "Simulated response message",
+                          "reasonCode": "OS_0000"
+                        },
+                        "legalEntityCode": "legal_entity",
+                        "orderId": "97ba55a0-f624-452f-8756-26d7dd473ebf",
+                        "pspCode": "CASHFREE",
+                        "pspReference": "9Azy8efkWY-u95wiTEPw4",
+                        "timestamp": "2025-05-14T14:00:36.629Z",
+                        "authCode": "5114917977467",
+                        "money": {
+                          "amount": 100,
+                          "currencyCode": "INR"
+                        },
+                        "shopper": {
+                          "firstName": "",
+                          "lastName": "",
+                          "gender": null,
+                          "phoneNumber": "+9123456789",
+                          "email": "example@mail.com",
+                          "uniqueReference": "1bd6e26a-1e77-4851-aead-9b7b7c13a2ea",
+                          "deliveryAddress": {
+                            "address1": "",
+                            "address2": "",
+                            "address3": null,
+                            "city": "Delhi",
+                            "state": "New Delhi",
+                            "countryCode": "IN",
+                            "postalCode": "122341",
+                            "shopperRef": null,
+                            "addressRef": null,
+                            "labelType": "Other",
+                            "labelName": null,
+                            "name": null,
+                            "email": "",
+                            "phoneNumber": null
+                          },
+                          "dateOfBirth": null,
+                          "panNumber": null
+                        },
+                        "paymentMethod": {
+                          "type": "NetBanking",
+                          "brand": "Bank"
+                        },
+                        "remainingCapturableAmount": {
+                          "amount": 0,
+                          "currencyCode": "INR"
+                        },
+                        "remainingRefundableAmount": {
+                          "amount": 100,
+                          "currencyCode": "INR"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2528,6 +2688,7 @@
               "non_existent_entity",
               "unauthorized",
               "psp_error",
+              "clw_provider_error",
               "limit_exceeded",
               "subscription_required",
               "subscription_limit_exceeded",
@@ -3439,6 +3600,51 @@
           }
         }
       },
+      "BillingCycle": {
+        "required": [
+          "billingTimeUnit"
+        ],
+        "type": "object",
+        "properties": {
+          "billingTimeUnit": {
+            "type": "string",
+            "enum": [
+              "Daily",
+              "Weekly",
+              "Monthly",
+              "Yearly",
+              "AsPresented"
+            ]
+          },
+          "count": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Number of billingTimeUnit periods between two consecutive payments",
+            "format": "int32"
+          }
+        }
+      },
+      "BillingDuration": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "FixedCycle",
+              "Perpetual"
+            ]
+          },
+          "noOfCycles": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Total number of billing cycles applicable if the type is FixedCycle.",
+            "format": "int32"
+          }
+        }
+      },
       "BrowserData": {
         "type": "object",
         "properties": {
@@ -3812,6 +4018,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -4168,6 +4377,9 @@
               "UPI_COLLECT",
               "UPI_INTENT",
               "UPI_QR",
+              "UPI_COLLECT_OTM",
+              "UPI_INTENT_OTM",
+              "UPI_QR_OTM",
               "PAYNOW_QR",
               "QR_LINKAJA",
               "QR_DANA",
@@ -4443,14 +4655,10 @@
       },
       "OneTimeMandateInstruction": {
         "required": [
-          "enabled",
           "expiryDate"
         ],
         "type": "object",
         "properties": {
-          "enabled": {
-            "type": "boolean"
-          },
           "startDate": {
             "type": "string",
             "description": "OTM start date",
@@ -4468,7 +4676,7 @@
             "$ref": "#/components/schemas/Money"
           },
           "multiCapture": {
-            "type": "string",
+            "type": "boolean",
             "description": "Is multiple capture allowed - Single Block Multi Debit"
           }
         },
@@ -4502,6 +4710,11 @@
         "description": "Order details containing items being sold"
       },
       "OrderItemDetails": {
+        "required": [
+          "description",
+          "itemName",
+          "quantity"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -4872,7 +5085,8 @@
               "DirectDebit",
               "VirtualAccount",
               "Emi",
-              "LocalCard"
+              "LocalCard",
+              "UpiOneTimeMandate"
             ]
           },
           "brand": {
@@ -5139,6 +5353,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -5427,6 +5644,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -5551,12 +5771,14 @@
       },
       "RecurringInstruction": {
         "required": [
-          "enabled"
+          "billingCycle",
+          "billingDuration"
         ],
         "type": "object",
         "properties": {
-          "enabled": {
-            "type": "boolean"
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "expiry": {
             "type": "string",
@@ -5567,6 +5789,12 @@
           },
           "maxAmount": {
             "type": "number"
+          },
+          "billingCycle": {
+            "$ref": "#/components/schemas/BillingCycle"
+          },
+          "billingDuration": {
+            "$ref": "#/components/schemas/BillingDuration"
           }
         },
         "description": "Instruction of the initial/registering recurring transaction"
@@ -5596,6 +5824,7 @@
             "type": "string",
             "enum": [
               "Yes",
+              "Prefer",
               "No"
             ]
           }
@@ -5708,6 +5937,10 @@
           },
           "instrumentRef": {
             "type": "string"
+          },
+          "addQrToIntent": {
+            "type": "boolean",
+            "description": "flag to get QR along with intent URL in a single request"
           }
         }
       },
@@ -6102,6 +6335,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -6390,6 +6626,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -6678,6 +6917,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -6989,7 +7231,8 @@
               "DirectDebit",
               "VirtualAccount",
               "Emi",
-              "LocalCard"
+              "LocalCard",
+              "UpiOneTimeMandate"
             ]
           },
           "fee": {
@@ -7226,7 +7469,8 @@
               "DirectDebit",
               "VirtualAccount",
               "Emi",
-              "LocalCard"
+              "LocalCard",
+              "UpiOneTimeMandate"
             ]
           },
           "brand": {
@@ -7493,6 +7737,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
@@ -7915,8 +8162,16 @@
               "CASHFREE",
               "HYPERPG",
               "PAYTEN",
+              "AIRWALLEX",
+              "FPP",
+              "BARCLAYCARD",
+              "TRUST",
+              "GLOMOPAY",
               "NONE"
             ]
+          },
+          "pspShopperAuthenticationStatus": {
+            "$ref": "#/components/schemas/PspShopperAuthenticationStatus"
           },
           "pspReference": {
             "type": "string",
@@ -8025,6 +8280,9 @@
           },
           "browserData": {
             "$ref": "#/components/schemas/BrowserData"
+          },
+          "merchantOperationReference": {
+            "type": "string"
           }
         }
       },
@@ -8078,6 +8336,35 @@
           },
           "linkedOperationId": {
             "type": "string"
+          }
+        }
+      },
+      "PspShopperAuthenticationStatus": {
+        "type": "object",
+        "properties": {
+          "authenticationStatus": {
+            "type": "string",
+            "enum": [
+              "CHALLENGE_REQUIRED",
+              "SUCCESS_FRICTIONLESS",
+              "SUCCESS_CHALLENGE",
+              "SUCCESS_STAND_IN",
+              "CARD_NOT_ENROLLED",
+              "UNAVAILABLE",
+              "REJECTED",
+              "FAILED",
+              "NOT_ATTEMPTED",
+              "ERROR"
+            ]
+          },
+          "referenceId": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "liabilityShift": {
+            "type": "boolean"
           }
         }
       },
@@ -8201,6 +8488,9 @@
           },
           "recurringReference": {
             "$ref": "#/components/schemas/RecurringReference"
+          },
+          "merchantOperationReference": {
+            "type": "string"
           }
         }
       },
@@ -8582,8 +8872,16 @@
               "CASHFREE",
               "HYPERPG",
               "PAYTEN",
+              "AIRWALLEX",
+              "FPP",
+              "BARCLAYCARD",
+              "TRUST",
+              "GLOMOPAY",
               "NONE"
             ]
+          },
+          "pspShopperAuthenticationStatus": {
+            "$ref": "#/components/schemas/PspShopperAuthenticationStatus"
           },
           "pspReference": {
             "type": "string",
@@ -8692,6 +8990,9 @@
           },
           "browserData": {
             "$ref": "#/components/schemas/BrowserData"
+          },
+          "merchantOperationReference": {
+            "type": "string"
           },
           "merchantReference": {
             "type": "string"
@@ -8857,53 +9158,6 @@
         },
         "description": "Operation Inquiry Details model."
       },
-      "BillingCycle": {
-        "required": [
-          "billingTimeUnit"
-        ],
-        "type": "object",
-        "properties": {
-          "billingTimeUnit": {
-            "type": "string",
-            "enum": [
-              "Daily",
-              "Weekly",
-              "Monthly",
-              "Yearly",
-              "AsPresented"
-            ]
-          },
-          "count": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "Number of billingTimeUnit periods between two consecutive payments",
-            "format": "int32"
-          }
-        },
-        "description": "Defines the billing cycle for the subscription, including the frequency and duration between consecutive payments. e.g. If billingTimeUnit is Weekly and count is 2, the billing cycle will occur every 2 weeks."
-      },
-      "BillingDuration": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "FixedCycle",
-              "Perpetual"
-            ]
-          },
-          "noOfCycles": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "Total number of billing cycles applicable if the type is FixedCycle.",
-            "format": "int32"
-          }
-        },
-        "description": "Defines the overall duration of the subscription."
-      },
       "PaymentCheckoutRequest": {
         "required": [
           "context",
@@ -8980,6 +9234,10 @@
           "onDemandAmount": {
             "type": "boolean",
             "description": "Specifies whether amount is variable, to be entered by user"
+          },
+          "paymentConfirmationMessage": {
+            "type": "string",
+            "description": "Payment confirmation message to display to your end customers post successful payment"
           },
           "descriptor": {
             "$ref": "#/components/schemas/Descriptor"
@@ -9133,6 +9391,10 @@
           "onDemandAmount": {
             "type": "boolean",
             "description": "Specifies whether amount is variable, to be entered by user"
+          },
+          "paymentConfirmationMessage": {
+            "type": "string",
+            "description": "Payment confirmation message to display to your end customers post successful payment"
           },
           "title": {
             "type": "string",
@@ -9456,6 +9718,9 @@
               "UpiCollect",
               "UpiIntent",
               "UpiQr",
+              "UpiCollectOtm",
+              "UpiIntentOtm",
+              "UpiQrOtm",
               "PaynowQr",
               "LinkajaQr",
               "DanaQr",
